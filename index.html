@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Falka • Valorant Agent Selector (FR/EN)</title>
+
+  <!-- Police "style Valorant" (proche) pour les titres -->
+  <!-- (La vraie police Valorant/Tungsten n'est pas libre. Bebas Neue donne un rendu très proche.) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      color-scheme: dark;
+      --bg:#0b0f1a;
+      --panel:#0f1526;
+      --panel2:#141b2e;
+      --text:#e9eefc;
+
+      /* Inspiré du logo Falka (rouge + crème) */
+      --f-red:#e5393b;
+      --f-cream:#e6d2ad;
+
+      --stroke: rgba(255,255,255,.10);
+      --stroke2: rgba(255,255,255,.14);
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(900px 500px at 20% 0%, rgba(229,57,59,.20), transparent 60%),
+        radial-gradient(700px 420px at 80% 15%, rgba(230,210,173,.12), transparent 55%),
+        var(--bg);
+      color:var(--text);
+    }
+
+    header{
+      padding:14px 16px;
+      border-bottom:1px solid var(--stroke);
+      position:sticky; top:0; z-index:10;
+      background: linear-gradient(180deg, rgba(11,15,26,.92), rgba(11,15,26,.86));
+      backdrop-filter: blur(8px);
+    }
+
+    .headerWrap{
+      max-width:980px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:260px;
+    }
+
+    /* Mets le fichier logo à côté de ce HTML sous le nom: falka-logo.png */
+    .logo{
+      width:42px; height:42px;
+      border-radius:14px; /* look badge */
+      border:1px solid var(--stroke2);
+      background:#000;
+      object-fit:cover;
+    }
+
+    .brandText{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+
+    .pseudo{
+      font-family: "Bebas Neue", system-ui, sans-serif;
+      letter-spacing:.10em;
+      font-size:26px;
+      color:var(--text);
+    }
+    .subbrand{
+      margin-top:4px;
+      font-size:12px;
+      color:rgba(233,238,252,.72);
+    }
+
+    .controls{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    label.muted{ color: rgba(233,238,252,.70); font-size:13px; }
+
+    select, button{
+      background: var(--panel2);
+      color: var(--text);
+      border: 1px solid var(--stroke2);
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+    }
+
+    button.primary{
+      background: linear-gradient(135deg, rgba(229,57,59,.95), rgba(229,57,59,.78));
+      border-color: rgba(255,255,255,.14);
+      box-shadow: 0 12px 34px rgba(229,57,59,.18);
+    }
+    button.ghost{ background: transparent; }
+
+    main{
+      max-width:980px;
+      margin:0 auto;
+      padding:18px 16px 18px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(15,21,38,.92), rgba(15,21,38,.86));
+      border:1px solid var(--stroke);
+      border-radius:18px;
+      padding:16px;
+      margin:14px 0;
+      box-shadow: 0 10px 34px rgba(0,0,0,.28);
+    }
+
+    .title{
+      font-family: "Bebas Neue", system-ui, sans-serif;
+      letter-spacing:.08em;
+      font-size:44px;
+      margin:10px 0 6px;
+    }
+
+    .muted{ color: rgba(233,238,252,.74); }
+
+    .row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+
+    .pill{
+      padding:7px 11px;
+      border-radius:999px;
+      border:1px solid var(--stroke2);
+      background: rgba(20,27,46,.72);
+      font-size:13px;
+    }
+    .pill.red{ border-color: rgba(229,57,59,.55); box-shadow: inset 0 0 0 1px rgba(229,57,59,.10); }
+    .pill.cream{ border-color: rgba(230,210,173,.45); box-shadow: inset 0 0 0 1px rgba(230,210,173,.08); }
+
+    .qtitle{
+      font-size:18px;
+      font-weight:800;
+      margin:6px 0 10px;
+    }
+
+    .answers{ display:grid; gap:10px; }
+
+    /* Réponses en police classique (system font) */
+    .ans{
+      text-align:left;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--stroke2);
+      background: rgba(20,27,46,.95);
+      transition: transform .05s ease, border-color .12s ease, box-shadow .12s ease;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .ans:hover{
+      transform: translateY(-1px);
+      border-color: rgba(230,210,173,.28);
+      box-shadow: 0 10px 26px rgba(0,0,0,.20);
+    }
+
+    .footerBtns{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+
+    .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    @media (max-width:720px){ .grid2{ grid-template-columns:1fr; } }
+
+    .resultBig{
+      font-family: "Bebas Neue", system-ui, sans-serif;
+      letter-spacing:.08em;
+      font-size:40px;
+      margin:10px 0 0;
+    }
+
+    .scoreWrap{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+    .scoreLine{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      background: rgba(20,27,46,.95);
+      border:1px solid var(--stroke);
+      width:min(420px,100%);
+    }
+    .scoreLine b{ font-weight:900; }
+
+    /* Footer réseaux */
+    footer{
+      max-width:980px;
+      margin:0 auto;
+      padding:0 16px 34px;
+    }
+    .footerCard{
+      background: linear-gradient(180deg, rgba(15,21,38,.92), rgba(15,21,38,.80));
+      border:1px solid var(--stroke);
+      border-radius:18px;
+      padding:16px;
+      box-shadow: 0 10px 34px rgba(0,0,0,.22);
+    }
+    .footerTitle{
+      font-family:"Bebas Neue", system-ui, sans-serif;
+      letter-spacing:.08em;
+      font-size:26px;
+      margin:0 0 8px;
+    }
+
+    .socialList{ display:grid; gap:10px; margin-top:10px; }
+    .socialItem{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--stroke);
+      background: rgba(20,27,46,.75);
+    }
+    .socialLeft{ display:flex; align-items:center; gap:10px; }
+    .badge{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--f-red);
+      box-shadow: 0 0 0 4px rgba(229,57,59,.10);
+    }
+    .socialName{ font-weight:800; }
+    .socialLink a{
+      color: var(--f-cream);
+      text-decoration:none;
+      font-weight:800;
+    }
+    .socialLink a:hover{ text-decoration:underline; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="headerWrap">
+      <div class="brand">
+        <!-- IMPORTANT: mets le logo fourni dans le même dossier que ce fichier HTML sous le nom "falka-logo.png" -->
+        <img class="logo" src="falka-logo.png" alt="Logo Falka" />
+        <div class="brandText">
+          <div class="pseudo">FALKA</div>
+          <div class="subbrand" id="subbrand">Agent Selector • Valorant</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <label class="muted" for="langSel" id="langLabel">Langue</label>
+        <select id="langSel" aria-label="Language">
+          <option value="fr">🇫🇷 Français</option>
+          <option value="en">🇬🇧 English</option>
+        </select>
+        <button class="ghost" id="restartBtn">Recommencer</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="card" id="introCard">
+      <div class="row">
+        <span class="pill red" id="pill1">10 questions</span>
+        <span class="pill cream" id="pill2">1 agent + 2 alternatives</span>
+        <span class="pill" id="pill3">Départage intelligent en cas d’égalité</span>
+      </div>
+
+      <div class="title" id="title">Quel agent Valorant te correspond ?</div>
+      <p class="muted" id="subtitle" style="margin:0;">
+        Réponds selon ta façon de jouer. Si deux rôles sont à égalité, une question bonus les départagera.
+      </p>
+
+      <div class="footerBtns">
+        <button class="primary" id="startBtn">Commencer</button>
+      </div>
+
+      <p class="muted" id="disclaimer" style="margin-top:10px; font-size:13px;">
+        Note : ce quiz donne une recommandation basée sur ton style. Mets à jour la liste d’agents si Riot en ajoute.
+      </p>
+    </div>
+
+    <div class="card" id="quizCard" style="display:none;">
+      <div class="row" style="justify-content:space-between; align-items:center;">
+        <div class="muted" id="progress">Question 1 / 10</div>
+        <span class="pill" id="roleHint">Rôles: Duelist / Initiator / Controller / Sentinel</span>
+      </div>
+
+      <div class="qtitle" id="qText">...</div>
+      <div class="answers" id="answers"></div>
+
+      <div class="footerBtns">
+        <button id="backBtn">Retour</button>
+      </div>
+    </div>
+
+    <div class="card" id="tiebreakCard" style="display:none;">
+      <div class="row" style="justify-content:space-between; align-items:center;">
+        <div class="muted" id="tbTitle">Question bonus (départage)</div>
+        <span class="pill red" id="tbPair">—</span>
+      </div>
+
+      <div class="qtitle" id="tbText">...</div>
+      <div class="answers" id="tbAnswers"></div>
+    </div>
+
+    <div class="card" id="resultCard" style="display:none;">
+      <div class="row">
+        <span class="pill red" id="pillMain">Agent principal</span>
+        <span class="pill cream" id="pillAlt">Alternatives compatibles</span>
+      </div>
+
+      <div class="resultBig" id="mainAgent">—</div>
+      <p class="muted" id="mainExplain" style="margin-top:0;">—</p>
+
+      <div class="grid2" style="margin-top:12px;">
+        <div class="card" style="margin:0;">
+          <b id="alt1Title">Alternative #1</b>
+          <div style="margin-top:8px; font-size:22px; font-weight:900;" id="alt1Agent">—</div>
+          <div class="muted" id="alt1Why" style="margin-top:6px;">—</div>
+        </div>
+        <div class="card" style="margin:0;">
+          <b id="alt2Title">Alternative #2</b>
+          <div style="margin-top:8px; font-size:22px; font-weight:900;" id="alt2Agent">—</div>
+          <div class="muted" id="alt2Why" style="margin-top:6px;">—</div>
+        </div>
+      </div>
+
+      <h3 style="margin:16px 0 8px;" id="scoreTitle">Scores</h3>
+      <div class="scoreWrap" id="scoreLines"></div>
+
+      <div class="footerBtns">
+        <button class="primary" id="retryBtn">Refaire le quiz</button>
+        <button id="copyBtn">Copier le résultat</button>
+      </div>
+
+      <p class="muted" id="noteMeta" style="margin-top:10px; font-size:13px;">
+        Astuce : si tu veux un résultat plus “sérieux”, réponds en pensant à tes 20 derniers matchs (pas ton humeur du moment).
+      </p>
+    </div>
+  </main>
+
+  <!-- FOOTER réseaux Falka -->
+  <footer>
+    <div class="footerCard">
+      <div class="footerTitle" id="footerTitle">Réseaux de Falka</div>
+      <div class="muted" id="footerSubtitle">Retrouve Falka sur :</div>
+
+      <div class="socialList">
+        <div class="socialItem">
+          <div class="socialLeft">
+            <span class="badge"></span>
+            <span class="socialName">Twitch</span>
+          </div>
+          <div class="socialLink">
+            <!-- Texte cliquable demandé -->
+            <a href="https://www.twitch.tv/falkalive" target="_blank" rel="noopener">FalkaLive</a>
+          </div>
+        </div>
+
+        <div class="socialItem">
+          <div class="socialLeft">
+            <span class="badge"></span>
+            <span class="socialName">TikTok</span>
+          </div>
+          <div class="socialLink">
+            <!-- Texte cliquable demandé -->
+            <a href="https://www.tiktok.com/@falkalive" target="_blank" rel="noopener">Falka TikTok</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="muted" style="margin:12px 0 0; font-size:12px;">
+        © Falka • Fan project • Valorant est une marque de Riot Games.
+      </p>
+    </div>
+  </footer>
+
+<script>
+(() => {
+  const ROLES = ["duelist","initiator","controller","sentinel"];
+
+  const ROLE_LABEL = {
+    fr: { duelist:"Duelist", initiator:"Initiator", controller:"Controller", sentinel:"Sentinel" },
+    en: { duelist:"Duelist", initiator:"Initiator", controller:"Controller", sentinel:"Sentinel" }
+  };
+
+  // Mets à jour si Riot ajoute des agents
+  const AGENTS = {
+    duelist:   ["Jett","Reyna","Raze","Phoenix","Yoru","Neon","Iso"],
+    initiator: ["Sova","Skye","Fade","Breach","KAY/O","Gekko"],
+    controller:["Omen","Brimstone","Viper","Astra","Harbor","Clove"],
+    sentinel:  ["Killjoy","Cypher","Sage","Chamber","Deadlock"]
+  };
+
+  const ROLE_EXPLAIN = {
+    fr: {
+      duelist: "Tu cherches l’impact direct : prendre l’espace, forcer des duels, créer l’ouverture.",
+      initiator: "Tu fais gagner des rounds avec l’info et l’entrée : flashes, reveals, pression intelligente.",
+      controller: "Tu contrôles le tempo : smokes, walls, découpage des lignes de vue et rotations.",
+      sentinel: "Tu sécurises et punis : défense solide, anti-flank, tenue de site et gadgets."
+    },
+    en: {
+      duelist: "You thrive on direct impact: taking space, forcing duels, creating openings.",
+      initiator: "You win rounds with info and entries: flashes, reveals, smart pressure.",
+      controller: "You control tempo: smokes, walls, cutting sightlines and rotations.",
+      sentinel: "You secure and punish: strong defense, anti-flank, site holds and gadgets."
+    }
+  };
+
+  const QUESTIONS = [
+    {
+      fr: { q:"Ton style naturel en début de round ?", a:[
+        ["J’entre en premier, je prends les duels.","duelist"],
+        ["Je prépare l’entrée avec mes utilitaires.","initiator"],
+        ["Je contrôle la map avec des smokes.","controller"],
+        ["Je sécurise les arrières et je protège.","sentinel"],
+      ]},
+      en: { q:"Your natural style at round start?", a:[
+        ["I entry first and take duels.","duelist"],
+        ["I prepare the entry with utility.","initiator"],
+        ["I control space with smokes.","controller"],
+        ["I lock down and protect flanks.","sentinel"],
+      ]}
+    },
+    {
+      fr: { q:"Quelle est ta plus grande force ?", a:[
+        ["Mon aim.","duelist"],
+        ["Ma vision stratégique.","controller"],
+        ["Ma communication / création d’ouverture.","initiator"],
+        ["Mon intelligence de jeu (timings, holds).","sentinel"],
+      ]},
+      en: { q:"What’s your biggest strength?", a:[
+        ["My aim.","duelist"],
+        ["My strategic vision.","controller"],
+        ["My comms / enabling openings.","initiator"],
+        ["My game sense (timings, holds).","sentinel"],
+      ]}
+    },
+    {
+      fr: { q:"Tu préfères gagner grâce à :", a:[
+        ["Des frags décisifs.","duelist"],
+        ["Des ouvertures créées par l’info/flash.","initiator"],
+        ["Le contrôle du tempo et des lignes de vue.","controller"],
+        ["Des erreurs adverses punies et une défense solide.","sentinel"],
+      ]},
+      en: { q:"You prefer winning through:", a:[
+        ["Decisive kills.","duelist"],
+        ["Openings via info/flash.","initiator"],
+        ["Tempo and sightline control.","controller"],
+        ["Punishing mistakes with solid defense.","sentinel"],
+      ]}
+    },
+    {
+      fr: { q:"En situation 1vX tu :", a:[
+        ["Cherches le duel rapide.","duelist"],
+        ["Isoles avec tes capacités (flash/reveal).","initiator"],
+        ["Joues le timing et la map (smokes).","controller"],
+        ["Forces les adversaires à venir dans ton setup.","sentinel"],
+      ]},
+      en: { q:"In a 1vX you:", a:[
+        ["Take fast duels.","duelist"],
+        ["Isolate with utility (flash/reveal).","initiator"],
+        ["Play timing and map control (smokes).","controller"],
+        ["Force enemies into your setup.","sentinel"],
+      ]}
+    },
+    {
+      fr: { q:"Ton niveau d’agressivité est plutôt :", a:[
+        ["Très agressif.","duelist"],
+        ["Agressif mais préparé.","initiator"],
+        ["Calme, je dicte le tempo.","controller"],
+        ["Patient, j’attends l’erreur.","sentinel"],
+      ]},
+      en: { q:"Your aggression level is:", a:[
+        ["Very aggressive.","duelist"],
+        ["Aggressive but prepared.","initiator"],
+        ["Calm, I dictate tempo.","controller"],
+        ["Patient, I wait for mistakes.","sentinel"],
+      ]}
+    },
+    {
+      fr: { q:"Ton rôle préféré dans l’équipe ?", a:[
+        ["Carry / fragger.","duelist"],
+        ["Facilitateur (entrée, info).","initiator"],
+        ["Chef d’orchestre (smokes, rotations).","controller"],
+        ["Pilier défensif (holds, anti-flank).","sentinel"],
+      ]},
+      en: { q:"Your preferred team role?", a:[
+        ["Carry / fragger.","duelist"],
+        ["Facilitator (entry, info).","initiator"],
+        ["Orchestrator (smokes, rotations).","controller"],
+        ["Defensive anchor (holds, anti-flank).","sentinel"],
+      ]}
+    },
+    {
+      fr: { q:"Tu te sens le plus fort :", a:[
+        ["En prise de space (entry).","duelist"],
+        ["En prise d’info et préparation.","initiator"],
+        ["En contrôle de site et découpes.","controller"],
+        ["En défense / tenue.","sentinel"],
+      ]},
+      en: { q:"You feel strongest:", a:[
+        ["Taking space (entry).","duelist"],
+        ["Gathering info and setting up.","initiator"],
+        ["Site control and slicing angles.","controller"],
+        ["On defense / holding.","sentinel"],
+      ]}
+    },
+    {
+      fr: { q:"Quelles capacités t’attirent le plus ?", a:[
+        ["Mobilité / dash.","duelist"],
+        ["Flash / reveal / drone.","initiator"],
+        ["Smokes / walls / vision denial.","controller"],
+        ["Pièges / ralentissements / gadgets.","sentinel"],
+      ]},
+      en: { q:"Which abilities attract you most?", a:[
+        ["Mobility / dash.","duelist"],
+        ["Flash / reveal / drone.","initiator"],
+        ["Smokes / walls / vision denial.","controller"],
+        ["Traps / slows / gadgets.","sentinel"],
+      ]}
+    },
+    {
+      fr: { q:"Ton niveau mécanique (mécaniques pures) ?", a:[
+        ["Très élevé, je veux en profiter.","duelist"],
+        ["Bon, mais je préfère aider l’entrée.","initiator"],
+        ["Moyen : je gagne via utilité.","controller"],
+        ["Variable : je mise sur le placement.","sentinel"],
+      ]},
+      en: { q:"Your raw mechanics level?", a:[
+        ["Very high, I want to leverage it.","duelist"],
+        ["Good, but I prefer enabling entry.","initiator"],
+        ["Average: I win through utility.","controller"],
+        ["Situational: I rely on positioning.","sentinel"],
+      ]}
+    },
+    {
+      fr: { q:"Tu veux être :", a:[
+        ["Le joueur flashy.","duelist"],
+        ["Celui qui déclenche l’action.","initiator"],
+        ["Le cerveau du round.","controller"],
+        ["Le pilier solide.","sentinel"],
+      ]},
+      en: { q:"You want to be:", a:[
+        ["The flashy player.","duelist"],
+        ["The play starter.","initiator"],
+        ["The brain of the round.","controller"],
+        ["The solid anchor.","sentinel"],
+      ]}
+    },
+  ];
+
+  // 1 question bonus par cas d’égalité
+  const TIEBREAK = {
+    "duelist|initiator": {
+      fr:{ q:"Dans un push important, tu préfères :", a:[
+        ["Dash et prendre le premier duel immédiatement.","duelist"],
+        ["Flash / révéler pour sécuriser l’entrée de l’équipe.","initiator"]
+      ]},
+      en:{ q:"In a key push, you prefer to:", a:[
+        ["Dash in and take the first duel.","duelist"],
+        ["Flash / reveal to secure the team’s entry.","initiator"]
+      ]}
+    },
+    "duelist|controller": {
+      fr:{ q:"Tu préfères avoir l’impact grâce :", a:[
+        ["À tes mécaniques et ta mobilité.","duelist"],
+        ["À ton contrôle de vision et de l’espace.","controller"]
+      ]},
+      en:{ q:"You prefer impact through:", a:[
+        ["Mechanics and mobility.","duelist"],
+        ["Vision and space control.","controller"]
+      ]}
+    },
+    "duelist|sentinel": {
+      fr:{ q:"Tu prends plus de plaisir à :", a:[
+        ["Chercher l’ouverture.","duelist"],
+        ["Tenir un site seul contre plusieurs ennemis.","sentinel"]
+      ]},
+      en:{ q:"You enjoy more:", a:[
+        ["Creating openings.","duelist"],
+        ["Holding a site alone vs multiple enemies.","sentinel"]
+      ]}
+    },
+    "initiator|controller": {
+      fr:{ q:"Tu préfères :", a:[
+        ["Révéler les ennemis pour créer l’action.","initiator"],
+        ["Bloquer la vision pour dicter le tempo.","controller"]
+      ]},
+      en:{ q:"You prefer to:", a:[
+        ["Reveal enemies to create action.","initiator"],
+        ["Block vision to dictate tempo.","controller"]
+      ]}
+    },
+    "initiator|sentinel": {
+      fr:{ q:"Tu te vois plus comme :", a:[
+        ["Celui qui déclenche l’action.","initiator"],
+        ["Celui qui sécurise l’équipe.","sentinel"]
+      ]},
+      en:{ q:"You see yourself more as:", a:[
+        ["The play starter.","initiator"],
+        ["The team protector.","sentinel"]
+      ]}
+    },
+    "controller|sentinel": {
+      fr:{ q:"Tu préfères :", a:[
+        ["Gérer la carte entière avec tes smokes.","controller"],
+        ["Contrôler une zone précise avec pièges et gadgets.","sentinel"]
+      ]},
+      en:{ q:"You prefer:", a:[
+        ["Managing the whole map with smokes.","controller"],
+        ["Controlling a specific zone with traps and gadgets.","sentinel"]
+      ]}
+    },
+  };
+
+  const $ = (id) => document.getElementById(id);
+
+  const introCard = $("introCard");
+  const quizCard = $("quizCard");
+  const tiebreakCard = $("tiebreakCard");
+  const resultCard = $("resultCard");
+
+  const langSel = $("langSel");
+  const startBtn = $("startBtn");
+  const restartBtn = $("restartBtn");
+  const backBtn = $("backBtn");
+
+  const qText = $("qText");
+  const answersEl = $("answers");
+  const progressEl = $("progress");
+
+  const tbTitle = $("tbTitle");
+  const tbPair = $("tbPair");
+  const tbText = $("tbText");
+  const tbAnswers = $("tbAnswers");
+
+  const mainAgent = $("mainAgent");
+  const mainExplain = $("mainExplain");
+  const alt1Agent = $("alt1Agent");
+  const alt2Agent = $("alt2Agent");
+  const alt1Why = $("alt1Why");
+  const alt2Why = $("alt2Why");
+  const scoreLines = $("scoreLines");
+
+  const retryBtn = $("retryBtn");
+  const copyBtn = $("copyBtn");
+
+  // Text nodes
+  const langLabel = $("langLabel");
+  const title = $("title");
+  const subtitle = $("subtitle");
+  const pill1 = $("pill1");
+  const pill2 = $("pill2");
+  const pill3 = $("pill3");
+  const roleHint = $("roleHint");
+  const disclaimer = $("disclaimer");
+  const pillMain = $("pillMain");
+  const pillAlt = $("pillAlt");
+  const alt1Title = $("alt1Title");
+  const alt2Title = $("alt2Title");
+  const scoreTitle = $("scoreTitle");
+  const noteMeta = $("noteMeta");
+  const subbrand = $("subbrand");
+  const footerTitle = $("footerTitle");
+  const footerSubtitle = $("footerSubtitle");
+
+  let lang = "fr";
+  let idx = 0;
+  let history = [];
+  let scores = initScores();
+  let pendingTiebreak = null;
+
+  function initScores(){
+    return { duelist:0, initiator:0, controller:0, sentinel:0 };
+  }
+
+  function pickAgent(role, excludeSet){
+    const pool = AGENTS[role] || [];
+    const options = pool.filter(x => !excludeSet.has(x));
+    const list = options.length ? options : pool;
+    return list[Math.floor(Math.random()*list.length)] || "—";
+  }
+
+  function setLanguage(newLang){
+    lang = newLang;
+    document.documentElement.lang = lang;
+
+    // Header / intro
+    langLabel.textContent = (lang==="fr") ? "Langue" : "Language";
+    restartBtn.textContent = (lang==="fr") ? "Recommencer" : "Restart";
+    subbrand.textContent = (lang==="fr") ? "Agent Selector • Valorant" : "Agent Selector • Valorant";
+    title.textContent = (lang==="fr") ? "Quel agent Valorant te correspond ?" : "Which Valorant agent fits you?";
+    subtitle.textContent = (lang==="fr")
+      ? "Réponds selon ta façon de jouer. Si deux rôles sont à égalité, une question bonus les départagera."
+      : "Answer based on your playstyle. If two roles tie, a bonus question will break the tie.";
+    pill1.textContent = (lang==="fr") ? "10 questions" : "10 questions";
+    pill2.textContent = (lang==="fr") ? "1 agent + 2 alternatives" : "1 agent + 2 alternatives";
+    pill3.textContent = (lang==="fr") ? "Départage intelligent en cas d’égalité" : "Smart tiebreak if tied";
+    startBtn.textContent = (lang==="fr") ? "Commencer" : "Start";
+    disclaimer.textContent = (lang==="fr")
+      ? "Note : ce quiz donne une recommandation basée sur ton style. Mets à jour la liste d’agents si Riot en ajoute."
+      : "Note: this quiz recommends based on playstyle. Update the agent list if Riot adds new agents.";
+
+    // Quiz
+    roleHint.textContent = (lang==="fr")
+      ? "Rôles: Duelist / Initiator / Controller / Sentinel"
+      : "Roles: Duelist / Initiator / Controller / Sentinel";
+    backBtn.textContent = (lang==="fr") ? "Retour" : "Back";
+
+    // Tiebreak
+    tbTitle.textContent = (lang==="fr") ? "Question bonus (départage)" : "Bonus question (tiebreak)";
+
+    // Results
+    pillMain.textContent = (lang==="fr") ? "Agent principal" : "Main agent";
+    pillAlt.textContent  = (lang==="fr") ? "Alternatives compatibles" : "Compatible alternatives";
+    alt1Title.textContent = (lang==="fr") ? "Alternative #1" : "Alternative #1";
+    alt2Title.textContent = (lang==="fr") ? "Alternative #2" : "Alternative #2";
+    scoreTitle.textContent = (lang==="fr") ? "Scores" : "Scores";
+    retryBtn.textContent = (lang==="fr") ? "Refaire le quiz" : "Retake quiz";
+    copyBtn.textContent = (lang==="fr") ? "Copier le résultat" : "Copy result";
+    noteMeta.textContent = (lang==="fr")
+      ? "Astuce : si tu veux un résultat plus “sérieux”, réponds en pensant à tes 20 derniers matchs (pas ton humeur du moment)."
+      : "Tip: for a more serious result, answer thinking about your last ~20 matches (not your current mood).";
+
+    // Footer
+    footerTitle.textContent = (lang==="fr") ? "Réseaux de Falka" : "Falka’s socials";
+    footerSubtitle.textContent = (lang==="fr") ? "Retrouve Falka sur :" : "Find Falka on:";
+
+    if(quizCard.style.display !== "none") renderQuestion();
+    if(tiebreakCard.style.display !== "none" && pendingTiebreak) renderTiebreak();
+    if(resultCard.style.display !== "none") renderScores();
+  }
+
+  function showOnly(which){
+    introCard.style.display = (which==="intro") ? "" : "none";
+    quizCard.style.display  = (which==="quiz") ? "" : "none";
+    tiebreakCard.style.display = (which==="tiebreak") ? "" : "none";
+    resultCard.style.display = (which==="result") ? "" : "none";
+  }
+
+  function start(){
+    idx = 0;
+    history = [];
+    scores = initScores();
+    pendingTiebreak = null;
+    showOnly("quiz");
+    renderQuestion();
+  }
+
+  function renderQuestion(){
+    const q = QUESTIONS[idx][lang];
+    progressEl.textContent = (lang==="fr")
+      ? `Question ${idx+1} / ${QUESTIONS.length}`
+      : `Question ${idx+1} / ${QUESTIONS.length}`;
+
+    qText.textContent = q.q;
+    answersEl.innerHTML = "";
+
+    q.a.forEach(([label, role]) => {
+      const btn = document.createElement("button");
+      btn.className = "ans";
+      btn.type = "button";
+      btn.textContent = label;
+      btn.addEventListener("click", () => chooseAnswer(role));
+      answersEl.appendChild(btn);
+    });
+
+    backBtn.style.display = (idx>0) ? "" : "none";
+  }
+
+  function chooseAnswer(role){
+    history.push({ qIndex: idx, role });
+    scores[role]++;
+    idx++;
+
+    if(idx < QUESTIONS.length){
+      renderQuestion();
+    } else {
+      resolveWithTiebreakIfNeeded();
+    }
+  }
+
+  function goBack(){
+    if(idx<=0) return;
+    idx--;
+    const last = history.pop();
+    if(last) scores[last.role] = Math.max(0, scores[last.role]-1);
+    renderQuestion();
+  }
+
+  function resolveWithTiebreakIfNeeded(){
+    const sorted = ROLES
+      .map(r => ({ role:r, score:scores[r] }))
+      .sort((a,b)=> b.score - a.score);
+
+    const topScore = sorted[0].score;
+    const tiedTop = sorted.filter(x => x.score === topScore).map(x=>x.role);
+
+    if(tiedTop.length === 1){
+      finalizeResult();
+      return;
+    }
+
+    // bracket: compare winner vs each next tied role with one question each
+    const bracketList = tiedTop.slice();
+    pendingTiebreak = { bracketList, winner: bracketList[0], nextIndex: 1 };
+    showOnly("tiebreak");
+    renderTiebreak();
+  }
+
+  function pairKey(r1,r2){
+    const a = [r1,r2].sort();
+    return `${a[0]}|${a[1]}`;
+  }
+
+  function renderTiebreak(){
+    const { bracketList, winner, nextIndex } = pendingTiebreak;
+    const challenger = bracketList[nextIndex];
+    const key = pairKey(winner, challenger);
+    const tb = TIEBREAK[key];
+
+    const question = tb ? tb[lang].q : (lang==="fr" ? "Question bonus :" : "Bonus question:");
+    const answers = tb ? tb[lang].a : [
+      [`Option 1 (${ROLE_LABEL[lang][winner]})`, winner],
+      [`Option 2 (${ROLE_LABEL[lang][challenger]})`, challenger]
+    ];
+
+    tbPair.textContent = `${ROLE_LABEL[lang][winner]} vs ${ROLE_LABEL[lang][challenger]}`;
+    tbText.textContent = question;
+    tbAnswers.innerHTML = "";
+
+    answers.forEach(([label, role]) => {
+      const btn = document.createElement("button");
+      btn.className = "ans";
+      btn.type = "button";
+      btn.textContent = label;
+      btn.addEventListener("click", () => chooseTiebreak(role));
+      tbAnswers.appendChild(btn);
+    });
+  }
+
+  function chooseTiebreak(chosenRole){
+    scores[chosenRole]++;               // casse l'égalité
+    pendingTiebreak.winner = chosenRole;
+    pendingTiebreak.nextIndex++;
+
+    if(pendingTiebreak.nextIndex < pendingTiebreak.bracketList.length){
+      renderTiebreak();
+    } else {
+      pendingTiebreak = null;
+      finalizeResult();
+    }
+  }
+
+  function finalizeResult(){
+    const ordered = ROLES
+      .map(r => ({ role:r, score:scores[r] }))
+      .sort((a,b)=> b.score - a.score);
+
+    const mainRole = ordered[0].role;
+    const secondRole = ordered[1].role;
+    const thirdRole = ordered[2].role;
+
+    const used = new Set();
+    const main = pickAgent(mainRole, used); used.add(main);
+    const alt1 = pickAgent(secondRole, used); used.add(alt1);
+    const alt2 = pickAgent(thirdRole, used); used.add(alt2);
+
+    mainAgent.textContent = main;
+    mainExplain.textContent = ROLE_EXPLAIN[lang][mainRole];
+
+    alt1Agent.textContent = alt1;
+    alt2Agent.textContent = alt2;
+
+    alt1Why.textContent = (lang==="fr")
+      ? `Rôle compatible : ${ROLE_LABEL.fr[secondRole]} — ${ROLE_EXPLAIN.fr[secondRole]}`
+      : `Compatible role: ${ROLE_LABEL.en[secondRole]} — ${ROLE_EXPLAIN.en[secondRole]}`;
+
+    alt2Why.textContent = (lang==="fr")
+      ? `Rôle compatible : ${ROLE_LABEL.fr[thirdRole]} — ${ROLE_EXPLAIN.fr[thirdRole]}`
+      : `Compatible role: ${ROLE_LABEL.en[thirdRole]} — ${ROLE_EXPLAIN.en[thirdRole]}`;
+
+    renderScores();
+    showOnly("result");
+  }
+
+  function renderScores(){
+    scoreLines.innerHTML = "";
+    const ordered = ROLES
+      .map(r => ({ role:r, score:scores[r] }))
+      .sort((a,b)=> b.score - a.score);
+
+    ordered.forEach(({role, score}) => {
+      const line = document.createElement("div");
+      line.className = "scoreLine";
+      const left = document.createElement("div");
+      left.innerHTML = `<b>${ROLE_LABEL[lang][role]}</b>`;
+      const right = document.createElement("div");
+      right.textContent = String(score);
+      line.appendChild(left);
+      line.appendChild(right);
+      scoreLines.appendChild(line);
+    });
+  }
+
+  async function copyResult(){
+    const ordered = ROLES
+      .map(r => ({ role:r, score:scores[r] }))
+      .sort((a,b)=> b.score - a.score);
+
+    const mainRole = ordered[0].role;
+
+    const txt = (lang==="fr")
+      ? `Résultat Valorant (Falka):\n- Agent principal: ${mainAgent.textContent} (${ROLE_LABEL.fr[mainRole]})\n- Alternatives: ${alt1Agent.textContent}, ${alt2Agent.textContent}\n- Scores: Duelist ${scores.duelist}, Initiator ${scores.initiator}, Controller ${scores.controller}, Sentinel ${scores.sentinel}`
+      : `Valorant result (Falka):\n- Main agent: ${mainAgent.textContent} (${ROLE_LABEL.en[mainRole]})\n- Alternatives: ${alt1Agent.textContent}, ${alt2Agent.textContent}\n- Scores: Duelist ${scores.duelist}, Initiator ${scores.initiator}, Controller ${scores.controller}, Sentinel ${scores.sentinel}`;
+
+    try{
+      await navigator.clipboard.writeText(txt);
+      copyBtn.textContent = (lang==="fr") ? "Copié ✅" : "Copied ✅";
+      setTimeout(()=> copyBtn.textContent = (lang==="fr") ? "Copier le résultat" : "Copy result", 1200);
+    } catch(e){
+      alert((lang==="fr") ? "Copie impossible (navigateur)." : "Copy failed (browser).");
+    }
+  }
+
+  // Events
+  langSel.addEventListener("change", (e) => setLanguage(e.target.value));
+  startBtn.addEventListener("click", start);
+  restartBtn.addEventListener("click", () => showOnly("intro"));
+  backBtn.addEventListener("click", goBack);
+  retryBtn.addEventListener("click", start);
+  copyBtn.addEventListener("click", copyResult);
+
+  // Init
+  setLanguage(langSel.value);
+})();
+</script>
+</body>
+</html>
