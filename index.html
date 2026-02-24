@@ -1334,7 +1334,9 @@
   // -------------------------
   langSel.addEventListener("change", (e) => setLanguage(e.target.value));
   startBtn.addEventListener("click", start);
-  restartBtn.addEventListener("click", () => showOnly("intro"));
+  restartBtn.addEventListener("click", () => {
+  location.reload();
+});
   backBtn.addEventListener("click", goBack);
   retryBtn.addEventListener("click", start);
   copyBtn.addEventListener("click", copyResult);
@@ -1345,3 +1347,4 @@
 </script>
 </body>
 </html>
+
