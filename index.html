@@ -25,7 +25,6 @@
       --stroke: rgba(255,255,255,.10);
       --stroke2: rgba(255,255,255,.14);
     }
-
     *{ box-sizing:border-box; }
     body{
       margin:0;
@@ -36,7 +35,6 @@
         var(--bg);
       color:var(--text);
     }
-
     header{
       padding:14px 16px;
       border-bottom:1px solid var(--stroke);
@@ -44,69 +42,32 @@
       background: linear-gradient(180deg, rgba(11,15,26,.92), rgba(11,15,26,.86));
       backdrop-filter: blur(8px);
     }
-
     .headerWrap{
-      max-width:980px;
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
+      max-width:980px; margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
     }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:260px;
-    }
-
-    /* Mets le fichier logo à côté de ce HTML sous le nom: falka-logo.png */
+    .brand{ display:flex; align-items:center; gap:12px; min-width:260px; }
     .logo{
-      width:42px; height:42px;
-      border-radius:14px;
+      width:42px; height:42px; border-radius:14px;
       border:1px solid var(--stroke2);
-      background:#000;
-      object-fit:cover;
+      background:#000; object-fit:cover;
     }
-
-    .brandText{
-      display:flex;
-      flex-direction:column;
-      line-height:1;
-    }
-
+    .brandText{ display:flex; flex-direction:column; line-height:1; }
     .pseudo{
-      font-family: "Bebas Neue", system-ui, sans-serif;
-      letter-spacing:.10em;
-      font-size:26px;
-      color:var(--text);
+      font-family:"Bebas Neue", system-ui, sans-serif;
+      letter-spacing:.10em; font-size:26px; color:var(--text);
     }
-    .subbrand{
-      margin-top:4px;
-      font-size:12px;
-      color:rgba(233,238,252,.72);
-    }
-
-    .controls{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-
+    .subbrand{ margin-top:4px; font-size:12px; color:rgba(233,238,252,.72); }
+    .controls{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
     label.muted{ color: rgba(233,238,252,.70); font-size:13px; }
-
     select, button{
-      background: var(--panel2);
-      color: var(--text);
+      background: var(--panel2); color: var(--text);
       border: 1px solid var(--stroke2);
       border-radius: 12px;
       padding: 10px 12px;
       cursor: pointer;
     }
-
     button.primary{
       background: linear-gradient(135deg, rgba(229,57,59,.95), rgba(229,57,59,.78));
       border-color: rgba(255,255,255,.14);
@@ -114,12 +75,7 @@
     }
     button.ghost{ background: transparent; }
 
-    main{
-      max-width:980px;
-      margin:0 auto;
-      padding:18px 16px 18px;
-    }
-
+    main{ max-width:980px; margin:0 auto; padding:18px 16px 18px; }
     .card{
       background: linear-gradient(180deg, rgba(15,21,38,.92), rgba(15,21,38,.86));
       border:1px solid var(--stroke);
@@ -128,37 +84,24 @@
       margin:14px 0;
       box-shadow: 0 10px 34px rgba(0,0,0,.28);
     }
-
     .title{
-      font-family: "Bebas Neue", system-ui, sans-serif;
+      font-family:"Bebas Neue", system-ui, sans-serif;
       letter-spacing:.08em;
       font-size:44px;
       margin:10px 0 6px;
     }
-
     .muted{ color: rgba(233,238,252,.74); }
-
     .row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
-
     .pill{
-      padding:7px 11px;
-      border-radius:999px;
+      padding:7px 11px; border-radius:999px;
       border:1px solid var(--stroke2);
       background: rgba(20,27,46,.72);
       font-size:13px;
     }
     .pill.red{ border-color: rgba(229,57,59,.55); box-shadow: inset 0 0 0 1px rgba(229,57,59,.10); }
     .pill.cream{ border-color: rgba(230,210,173,.45); box-shadow: inset 0 0 0 1px rgba(230,210,173,.08); }
-
-    .qtitle{
-      font-size:18px;
-      font-weight:800;
-      margin:6px 0 10px;
-    }
-
+    .qtitle{ font-size:18px; font-weight:800; margin:6px 0 10px; }
     .answers{ display:grid; gap:10px; }
-
-    /* Réponses en police classique */
     .ans{
       text-align:left;
       padding:12px 12px;
@@ -173,38 +116,26 @@
       border-color: rgba(230,210,173,.28);
       box-shadow: 0 10px 26px rgba(0,0,0,.20);
     }
-
     .footerBtns{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
-
     .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
     @media (max-width:720px){ .grid2{ grid-template-columns:1fr; } }
-
     .resultBig{
-      font-family: "Bebas Neue", system-ui, sans-serif;
+      font-family:"Bebas Neue", system-ui, sans-serif;
       letter-spacing:.08em;
       font-size:40px;
       margin:10px 0 0;
     }
-
     .scoreWrap{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
     .scoreLine{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:14px;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      padding:10px 12px; border-radius:14px;
       background: rgba(20,27,46,.95);
       border:1px solid var(--stroke);
       width:min(420px,100%);
     }
     .scoreLine b{ font-weight:900; }
 
-    footer{
-      max-width:980px;
-      margin:0 auto;
-      padding:0 16px 34px;
-    }
+    footer{ max-width:980px; margin:0 auto; padding:0 16px 34px; }
     .footerCard{
       background: linear-gradient(180deg, rgba(15,21,38,.92), rgba(15,21,38,.80));
       border:1px solid var(--stroke);
@@ -220,12 +151,8 @@
     }
     .socialList{ display:grid; gap:10px; margin-top:10px; }
     .socialItem{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      padding:12px 12px;
-      border-radius:14px;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      padding:12px 12px; border-radius:14px;
       border:1px solid var(--stroke);
       background: rgba(20,27,46,.75);
     }
@@ -236,11 +163,7 @@
       box-shadow: 0 0 0 4px rgba(229,57,59,.10);
     }
     .socialName{ font-weight:800; }
-    .socialLink a{
-      color: var(--f-cream);
-      text-decoration:none;
-      font-weight:800;
-    }
+    .socialLink a{ color: var(--f-cream); text-decoration:none; font-weight:800; }
     .socialLink a:hover{ text-decoration:underline; }
   </style>
 </head>
@@ -249,7 +172,6 @@
   <header>
     <div class="headerWrap">
       <div class="brand">
-        <!-- Mets le logo fourni dans le même dossier que ce fichier HTML sous le nom "falka-logo.png" -->
         <img class="logo" src="falka-logo.png" alt="Logo Falka" />
         <div class="brandText">
           <div class="pseudo">FALKA</div>
@@ -306,8 +228,9 @@
 
     <div class="card" id="tiebreakCard" style="display:none;">
       <div class="row" style="justify-content:space-between; align-items:center;">
-        <div class="muted" id="tbTitle">Question bonus (départage)</div>
-        <span class="pill red" id="tbPair">—</span>
+        <div class="muted" id="tbTitle">Question bonus</div>
+        <!-- IMPORTANT: pas de "X vs Y" affiché -->
+        <span class="pill red" id="tbBadge">Décision finale</span>
       </div>
 
       <div class="qtitle" id="tbText">...</div>
@@ -357,23 +280,12 @@
 
       <div class="socialList">
         <div class="socialItem">
-          <div class="socialLeft">
-            <span class="badge"></span>
-            <span class="socialName">Twitch</span>
-          </div>
-          <div class="socialLink">
-            <a href="https://www.twitch.tv/falkalive" target="_blank" rel="noopener">FalkaLive</a>
-          </div>
+          <div class="socialLeft"><span class="badge"></span><span class="socialName">Twitch</span></div>
+          <div class="socialLink"><a href="https://www.twitch.tv/falkalive" target="_blank" rel="noopener">FalkaLive</a></div>
         </div>
-
         <div class="socialItem">
-          <div class="socialLeft">
-            <span class="badge"></span>
-            <span class="socialName">TikTok</span>
-          </div>
-          <div class="socialLink">
-            <a href="https://www.tiktok.com/@falkalive" target="_blank" rel="noopener">Falka TikTok</a>
-          </div>
+          <div class="socialLeft"><span class="badge"></span><span class="socialName">TikTok</span></div>
+          <div class="socialLink"><a href="https://www.tiktok.com/@falkalive" target="_blank" rel="noopener">Falka TikTok</a></div>
         </div>
       </div>
 
@@ -385,57 +297,24 @@
 
 <script>
 (() => {
-  // -------------------------
-  // Helpers
-  // -------------------------
   const $ = (id) => document.getElementById(id);
   const clamp0 = (n) => Math.max(0, n);
+  const pairKey = (a,b) => [a,b].sort().join("|");
+  const initScoreMap = (keys) => Object.fromEntries(keys.map(k => [k, 0]));
+  const sortedKeys = (scoreMap) => Object.entries(scoreMap)
+    .map(([k,v]) => ({k,v}))
+    .sort((a,b)=> b.v - a.v || a.k.localeCompare(b.k))
+    .map(e => e.k);
 
-  function pairKey(a,b){
-    const s = [a,b].sort();
-    return `${s[0]}|${s[1]}`;
-  }
-
-  function initScoreMap(keys){
-    const m = {};
-    keys.forEach(k => m[k] = 0);
-    return m;
-  }
-
-  function topKeys(scoreMap){
-    const entries = Object.entries(scoreMap).map(([k,v]) => ({k, v}));
-    const max = Math.max(...entries.map(e => e.v));
-    return entries.filter(e => e.v === max).map(e => e.k);
-  }
-
-  function sortedKeys(scoreMap){
-    return Object.entries(scoreMap)
-      .map(([k,v]) => ({k,v}))
-      .sort((a,b)=> b.v - a.v || a.k.localeCompare(b.k))
-      .map(e => e.k);
-  }
-
-  // -------------------------
-  // Language labels
-  // -------------------------
   const LABELS = {
     fr: {
-      language:"Langue",
-      restart:"Recommencer",
-      start:"Commencer",
-      back:"Retour",
-      phaseRole:"Phase : Rôle",
-      phaseAgent:"Phase : Agent",
-      tiebreakTitle:"Question bonus (départage)",
-      retake:"Refaire le quiz",
-      copy:"Copier le résultat",
-      copied:"Copié ✅",
+      language:"Langue", restart:"Recommencer", start:"Commencer", back:"Retour",
+      phaseRole:"Phase : Rôle", phaseAgent:"Phase : Agent",
+      tiebreakTitle:"Question bonus", tiebreakBadge:"Décision finale",
+      retake:"Refaire le quiz", copy:"Copier le résultat", copied:"Copié ✅",
       scores:"Scores (agents)",
-      scoresRole:"Scores (rôles)",
-      alt1:"Alternative #1",
-      alt2:"Alternative #2",
-      socialsTitle:"Réseaux de Falka",
-      socialsSub:"Retrouve Falka sur :",
+      alt1:"Alternative #1", alt2:"Alternative #2",
+      socialsTitle:"Réseaux de Falka", socialsSub:"Retrouve Falka sur :",
       introTitle:"Quel agent Valorant te correspond ?",
       introSub:"10 questions pour trouver ton rôle, puis 10 questions pour trouver ton agent dans ce rôle.",
       note:"Astuce : réponds en pensant à tes derniers matchs, pas à ton humeur du moment.",
@@ -447,22 +326,13 @@
       }
     },
     en: {
-      language:"Language",
-      restart:"Restart",
-      start:"Start",
-      back:"Back",
-      phaseRole:"Phase: Role",
-      phaseAgent:"Phase: Agent",
-      tiebreakTitle:"Bonus question (tiebreak)",
-      retake:"Retake quiz",
-      copy:"Copy result",
-      copied:"Copied ✅",
+      language:"Language", restart:"Restart", start:"Start", back:"Back",
+      phaseRole:"Phase: Role", phaseAgent:"Phase: Agent",
+      tiebreakTitle:"Bonus question", tiebreakBadge:"Final decision",
+      retake:"Retake quiz", copy:"Copy result", copied:"Copied ✅",
       scores:"Scores (agents)",
-      scoresRole:"Scores (roles)",
-      alt1:"Alternative #1",
-      alt2:"Alternative #2",
-      socialsTitle:"Falka’s socials",
-      socialsSub:"Find Falka on:",
+      alt1:"Alternative #1", alt2:"Alternative #2",
+      socialsTitle:"Falka’s socials", socialsSub:"Find Falka on:",
       introTitle:"Which Valorant agent fits you?",
       introSub:"10 questions to find your role, then 10 questions to find your agent within that role.",
       note:"Tip: answer thinking about your latest matches, not your current mood.",
@@ -475,766 +345,133 @@
     }
   };
 
-  // -------------------------
-  // Phase 1 - ROLE questions
-  // (Vous allez remplacer ces 10 questions par vos versions.
-  //  Format: {fr:{q, a:[[text, roleKey],...]}, en:{...}}
-  //  roleKey: duelist|initiator|controller|sentinel
-  // -------------------------
+  // --- Phase 1 (Rôle) : vous remplacerez ce bloc par vos 10 questions finales
   const ROLE_QUESTIONS = [
-    {
-      fr:{ q:"Ton style naturel en début de round ?", a:[
-        ["J’entre en premier, je prends les duels.","duelist"],
-        ["Je prépare l’entrée avec mes utilitaires.","initiator"],
-        ["Je contrôle la map avec des smokes.","controller"],
-        ["Je sécurise les arrières et je protège.","sentinel"],
-      ]},
-      en:{ q:"Your natural style at round start?", a:[
-        ["I entry first and take duels.","duelist"],
-        ["I prepare the entry with utility.","initiator"],
-        ["I control space with smokes.","controller"],
-        ["I lock down and protect flanks.","sentinel"],
-      ]}
-    },
-    {
-      fr:{ q:"Quelle est ta plus grande force ?", a:[
-        ["Mon aim.","duelist"],
-        ["Ma communication / création d’ouverture.","initiator"],
-        ["Ma vision stratégique.","controller"],
-        ["Mon intelligence de jeu (timings, holds).","sentinel"],
-      ]},
-      en:{ q:"What’s your biggest strength?", a:[
-        ["My aim.","duelist"],
-        ["My comms / enabling openings.","initiator"],
-        ["My strategic vision.","controller"],
-        ["My game sense (timings, holds).","sentinel"],
-      ]}
-    },
-    {
-      fr:{ q:"Tu préfères gagner grâce à :", a:[
-        ["Des frags décisifs.","duelist"],
-        ["Des ouvertures créées par l’info/flash.","initiator"],
-        ["Le contrôle du tempo et des lignes de vue.","controller"],
-        ["Des erreurs adverses punies et une défense solide.","sentinel"],
-      ]},
-      en:{ q:"You prefer winning through:", a:[
-        ["Decisive kills.","duelist"],
-        ["Openings via info/flash.","initiator"],
-        ["Tempo and sightline control.","controller"],
-        ["Punishing mistakes with solid defense.","sentinel"],
-      ]}
-    },
-    {
-      fr:{ q:"En situation 1vX tu :", a:[
-        ["Cherches le duel rapide.","duelist"],
-        ["Isoles avec tes capacités (flash/reveal).","initiator"],
-        ["Joues le timing et la map (smokes).","controller"],
-        ["Forces les adversaires à venir dans ton setup.","sentinel"],
-      ]},
-      en:{ q:"In a 1vX you:", a:[
-        ["Take fast duels.","duelist"],
-        ["Isolate with utility (flash/reveal).","initiator"],
-        ["Play timing and map control (smokes).","controller"],
-        ["Force enemies into your setup.","sentinel"],
-      ]}
-    },
-    {
-      fr:{ q:"Ton niveau d’agressivité est plutôt :", a:[
-        ["Très agressif.","duelist"],
-        ["Agressif mais préparé.","initiator"],
-        ["Calme, je dicte le tempo.","controller"],
-        ["Patient, j’attends l’erreur.","sentinel"],
-      ]},
-      en:{ q:"Your aggression level is:", a:[
-        ["Very aggressive.","duelist"],
-        ["Aggressive but prepared.","initiator"],
-        ["Calm, I dictate tempo.","controller"],
-        ["Patient, I wait for mistakes.","sentinel"],
-      ]}
-    },
-    {
-      fr:{ q:"Ton rôle préféré dans l’équipe ?", a:[
-        ["Carry / fragger.","duelist"],
-        ["Facilitateur (entrée, info).","initiator"],
-        ["Chef d’orchestre (smokes, rotations).","controller"],
-        ["Pilier défensif (holds, anti-flank).","sentinel"],
-      ]},
-      en:{ q:"Your preferred team role?", a:[
-        ["Carry / fragger.","duelist"],
-        ["Facilitator (entry, info).","initiator"],
-        ["Orchestrator (smokes, rotations).","controller"],
-        ["Defensive anchor (holds, anti-flank).","sentinel"],
-      ]}
-    },
-    {
-      fr:{ q:"Tu te sens le plus fort :", a:[
-        ["En prise de space (entry).","duelist"],
-        ["En prise d’info et préparation.","initiator"],
-        ["En contrôle de site et découpes.","controller"],
-        ["En défense / tenue.","sentinel"],
-      ]},
-      en:{ q:"You feel strongest:", a:[
-        ["Taking space (entry).","duelist"],
-        ["Gathering info and setting up.","initiator"],
-        ["Site control and slicing angles.","controller"],
-        ["On defense / holding.","sentinel"],
-      ]}
-    },
-    {
-      fr:{ q:"Quelles capacités t’attirent le plus ?", a:[
-        ["Mobilité / dash.","duelist"],
-        ["Flash / reveal / drone.","initiator"],
-        ["Smokes / walls / vision denial.","controller"],
-        ["Pièges / ralentissements / gadgets.","sentinel"],
-      ]},
-      en:{ q:"Which abilities attract you most?", a:[
-        ["Mobility / dash.","duelist"],
-        ["Flash / reveal / drone.","initiator"],
-        ["Smokes / walls / vision denial.","controller"],
-        ["Traps / slows / gadgets.","sentinel"],
-      ]}
-    },
-    {
-      fr:{ q:"Ton niveau mécanique (mécaniques pures) ?", a:[
-        ["Très élevé, je veux en profiter.","duelist"],
-        ["Bon, mais je préfère aider l’entrée.","initiator"],
-        ["Moyen : je gagne via utilité.","controller"],
-        ["Variable : je mise sur le placement.","sentinel"],
-      ]},
-      en:{ q:"Your raw mechanics level?", a:[
-        ["Very high, I want to leverage it.","duelist"],
-        ["Good, but I prefer enabling entry.","initiator"],
-        ["Average: I win through utility.","controller"],
-        ["Situational: I rely on positioning.","sentinel"],
-      ]}
-    },
-    {
-      fr:{ q:"Tu veux être :", a:[
-        ["Le joueur flashy.","duelist"],
-        ["Celui qui déclenche l’action.","initiator"],
-        ["Le cerveau du round.","controller"],
-        ["Le pilier solide.","sentinel"],
-      ]},
-      en:{ q:"You want to be:", a:[
-        ["The flashy player.","duelist"],
-        ["The play starter.","initiator"],
-        ["The brain of the round.","controller"],
-        ["The solid anchor.","sentinel"],
-      ]}
-    }
-  ];
-
-  // -------------------------
-  // Phase 2 - AGENT questions (10 par rôle)
-  // Chaque réponse = +1 à un AGENT (pas au rôle).
-  // Format: {fr:{q, a:[[text, agentName], ...]}, en:{...}}
-  // -------------------------
-
-  // DUELISTS (7 agents => 7 réponses)
-  const AGENT_Q_DUELIST = [
-    { fr:{q:"Quand un round commence mal, ton premier réflexe est :", a:[
-      ["Créer de l’espace ailleurs.","Jett"],
-      ["Forcer un moment de chaos.","Raze"],
-      ["Chercher un duel isolé.","Reyna"],
-      ["Revenir progressivement dans le round.","Phoenix"],
-      ["Changer complètement de rythme.","Yoru"],
-      ["Accélérer la pression.","Neon"],
-      ["Reprendre un duel frontal.","Iso"],
-    ]}, en:{q:"When a round starts badly, your first instinct is:", a:[
-      ["Create space elsewhere.","Jett"],
-      ["Force a moment of chaos.","Raze"],
-      ["Look for an isolated duel.","Reyna"],
-      ["Work your way back into the round.","Phoenix"],
-      ["Completely change the pace.","Yoru"],
-      ["Speed up the pressure.","Neon"],
-      ["Take a straight-up duel.","Iso"],
+    { fr:{ q:"Ton style naturel en début de round ?", a:[
+      ["J’entre en premier, je prends les duels.","duelist"],
+      ["Je prépare l’entrée avec mes utilitaires.","initiator"],
+      ["Je contrôle la map avec des smokes.","controller"],
+      ["Je sécurise les arrières et je protège.","sentinel"],
+    ]}, en:{ q:"Your natural style at round start?", a:[
+      ["I entry first and take duels.","duelist"],
+      ["I prepare the entry with utility.","initiator"],
+      ["I control space with smokes.","controller"],
+      ["I lock down and protect flanks.","sentinel"],
     ]}},
-    { fr:{q:"Quand tu gagnes un duel important, tu :", a:[
-      ["Te replaces immédiatement.","Jett"],
-      ["Continues à casser le rythme.","Raze"],
-      ["Cherches à enchaîner.","Reyna"],
-      ["Stabilises la situation.","Phoenix"],
-      ["Deviens imprévisible.","Yoru"],
-      ["Maintiens l’intensité.","Neon"],
-      ["Restes concentré sur le prochain duel.","Iso"],
-    ]}, en:{q:"When you win an important duel, you:", a:[
-      ["Reposition immediately.","Jett"],
-      ["Keep breaking the rhythm.","Raze"],
-      ["Try to chain fights.","Reyna"],
-      ["Stabilize the situation.","Phoenix"],
-      ["Become unpredictable.","Yoru"],
-      ["Keep the intensity high.","Neon"],
-      ["Focus on the next fair fight.","Iso"],
+    { fr:{ q:"Quelle est ta plus grande force ?", a:[
+      ["Mon aim.","duelist"],
+      ["Ma communication / création d’ouverture.","initiator"],
+      ["Ma vision stratégique.","controller"],
+      ["Mon intelligence de jeu (timings, holds).","sentinel"],
+    ]}, en:{ q:"What’s your biggest strength?", a:[
+      ["My aim.","duelist"],
+      ["My comms / enabling openings.","initiator"],
+      ["My strategic vision.","controller"],
+      ["My game sense (timings, holds).","sentinel"],
     ]}},
-    { fr:{q:"Dans un round lent, tu te sens :", a:[
-      ["Patient mais prêt à bouger.","Jett"],
-      ["Frustré, tu veux que ça explose.","Raze"],
-      ["En attente d’une erreur.","Reyna"],
-      ["Confiant dans la durée.","Phoenix"],
-      ["En train de préparer quelque chose.","Yoru"],
-      ["Survolté.","Neon"],
-      ["Stable.","Iso"],
-    ]}, en:{q:"In a slow round, you feel:", a:[
-      ["Patient but ready to move.","Jett"],
-      ["Frustrated — you want it to blow up.","Raze"],
-      ["Waiting for a mistake.","Reyna"],
-      ["Confident over time.","Phoenix"],
-      ["Setting something up.","Yoru"],
-      ["Wired / hyped.","Neon"],
-      ["Steady.","Iso"],
+    { fr:{ q:"Tu préfères gagner grâce à :", a:[
+      ["Des frags décisifs.","duelist"],
+      ["Des ouvertures créées par l’info/flash.","initiator"],
+      ["Le contrôle du tempo et des lignes de vue.","controller"],
+      ["Des erreurs adverses punies et une défense solide.","sentinel"],
+    ]}, en:{ q:"You prefer winning through:", a:[
+      ["Decisive kills.","duelist"],
+      ["Openings via info/flash.","initiator"],
+      ["Tempo and sightline control.","controller"],
+      ["Punishing mistakes with solid defense.","sentinel"],
     ]}},
-    { fr:{q:"Ton plus grand atout en Duelist :", a:[
-      ["Contrôle en mouvement.","Jett"],
-      ["Impact immédiat.","Raze"],
-      ["Confiance / domination mentale.","Reyna"],
-      ["Capacité à revenir après un mauvais départ.","Phoenix"],
-      ["Créativité / mindgame.","Yoru"],
-      ["Énergie / pression continue.","Neon"],
-      ["Discipline en face-à-face.","Iso"],
-    ]}, en:{q:"Your biggest Duelist strength:", a:[
-      ["Control while moving.","Jett"],
-      ["Immediate impact.","Raze"],
-      ["Confidence / mental dominance.","Reyna"],
-      ["Ability to bounce back.","Phoenix"],
-      ["Creativity / mindgames.","Yoru"],
-      ["Energy / constant pressure.","Neon"],
-      ["Discipline in fair duels.","Iso"],
+    { fr:{ q:"En situation 1vX tu :", a:[
+      ["Cherches le duel rapide.","duelist"],
+      ["Isoles avec tes capacités (flash/reveal).","initiator"],
+      ["Joues le timing et la map (smokes).","controller"],
+      ["Forces les adversaires à venir dans ton setup.","sentinel"],
+    ]}, en:{ q:"In a 1vX you:", a:[
+      ["Take fast duels.","duelist"],
+      ["Isolate with utility (flash/reveal).","initiator"],
+      ["Play timing and map control (smokes).","controller"],
+      ["Force enemies into your setup.","sentinel"],
     ]}},
-    { fr:{q:"En 1v2, ton plan naturel :", a:[
-      ["Repositionner pour séparer.","Jett"],
-      ["Provoquer une erreur via le chaos.","Raze"],
-      ["Isoler puis enchaîner.","Reyna"],
-      ["Gagner du temps puis revenir.","Phoenix"],
-      ["Feinter pour désorienter.","Yoru"],
-      ["Accélérer pour prendre de vitesse.","Neon"],
-      ["Prendre un duel propre, puis le second.","Iso"],
-    ]}, en:{q:"In a 1v2, your natural plan:", a:[
-      ["Reposition to split them.","Jett"],
-      ["Create mistakes through chaos.","Raze"],
-      ["Isolate then chain.","Reyna"],
-      ["Buy time then come back.","Phoenix"],
-      ["Fake to disorient.","Yoru"],
-      ["Speed up to overwhelm.","Neon"],
-      ["Take a clean duel, then the second.","Iso"],
+    { fr:{ q:"Ton niveau d’agressivité est plutôt :", a:[
+      ["Très agressif.","duelist"],
+      ["Agressif mais préparé.","initiator"],
+      ["Calme, je dicte le tempo.","controller"],
+      ["Patient, j’attends l’erreur.","sentinel"],
+    ]}, en:{ q:"Your aggression level is:", a:[
+      ["Very aggressive.","duelist"],
+      ["Aggressive but prepared.","initiator"],
+      ["Calm, I dictate tempo.","controller"],
+      ["Patient, I wait for mistakes.","sentinel"],
     ]}},
-    { fr:{q:"Tu veux que l’adversaire ressente :", a:[
-      ["De l’incertitude face à tes positions.","Jett"],
-      ["De la panique.","Raze"],
-      ["Qu’il est “punished”.","Reyna"],
-      ["Qu’il n’arrive pas à te finir.","Phoenix"],
-      ["Qu’il est perdu.","Yoru"],
-      ["Qu’il est dépassé.","Neon"],
-      ["Qu’il doit te respecter en duel.","Iso"],
-    ]}, en:{q:"You want the enemy to feel:", a:[
-      ["Uncertainty about your positions.","Jett"],
-      ["Panic.","Raze"],
-      ["They’re being punished.","Reyna"],
-      ["They can’t finish you off.","Phoenix"],
-      ["They’re lost.","Yoru"],
-      ["They’re outpaced.","Neon"],
-      ["They must respect your duels.","Iso"],
+    { fr:{ q:"Ton rôle préféré dans l’équipe ?", a:[
+      ["Carry / fragger.","duelist"],
+      ["Facilitateur (entrée, info).","initiator"],
+      ["Chef d’orchestre (smokes, rotations).","controller"],
+      ["Pilier défensif (holds, anti-flank).","sentinel"],
+    ]}, en:{ q:"Your preferred team role?", a:[
+      ["Carry / fragger.","duelist"],
+      ["Facilitator (entry, info).","initiator"],
+      ["Orchestrator (smokes, rotations).","controller"],
+      ["Defensive anchor (holds, anti-flank).","sentinel"],
     ]}},
-    { fr:{q:"Quand tu rates un duel, tu :", a:[
-      ["Ajustes ton angle et reviens ailleurs.","Jett"],
-      ["Re-forces vite pour reprendre le tempo.","Raze"],
-      ["Cherches un pick rapide pour “reset”.","Reyna"],
-      ["Reviens plus safe et progressif.","Phoenix"],
-      ["Changes complètement de pattern.","Yoru"],
-      ["Augmentes encore le rythme.","Neon"],
-      ["Reviens plus propre techniquement.","Iso"],
-    ]}, en:{q:"When you lose a duel, you:", a:[
-      ["Adjust your angle and re-appear elsewhere.","Jett"],
-      ["Re-force quickly to take tempo back.","Raze"],
-      ["Look for a fast pick to reset.","Reyna"],
-      ["Come back safer and progressive.","Phoenix"],
-      ["Change your pattern completely.","Yoru"],
-      ["Ramp the pace up even more.","Neon"],
-      ["Return cleaner mechanically.","Iso"],
+    { fr:{ q:"Tu te sens le plus fort :", a:[
+      ["En prise de space (entry).","duelist"],
+      ["En prise d’info et préparation.","initiator"],
+      ["En contrôle de site et découpes.","controller"],
+      ["En défense / tenue.","sentinel"],
+    ]}, en:{ q:"You feel strongest:", a:[
+      ["Taking space (entry).","duelist"],
+      ["Gathering info and setting up.","initiator"],
+      ["Site control and slicing angles.","controller"],
+      ["On defense / holding.","sentinel"],
     ]}},
-    { fr:{q:"Ton style par défaut :", a:[
-      ["Fluide.","Jett"],
-      ["Intense.","Raze"],
-      ["Opportuniste.","Reyna"],
-      ["Résistant.","Phoenix"],
-      ["Imprévisible.","Yoru"],
-      ["Dynamique.","Neon"],
-      ["Frontal.","Iso"],
-    ]}, en:{q:"Your default style:", a:[
-      ["Fluid.","Jett"],
-      ["Intense.","Raze"],
-      ["Opportunistic.","Reyna"],
-      ["Resilient.","Phoenix"],
-      ["Unpredictable.","Yoru"],
-      ["Dynamic.","Neon"],
-      ["Head-on.","Iso"],
+    { fr:{ q:"Quelles capacités t’attirent le plus ?", a:[
+      ["Mobilité / dash.","duelist"],
+      ["Flash / reveal / drone.","initiator"],
+      ["Smokes / walls / vision denial.","controller"],
+      ["Pièges / ralentissements / gadgets.","sentinel"],
+    ]}, en:{ q:"Which abilities attract you most?", a:[
+      ["Mobility / dash.","duelist"],
+      ["Flash / reveal / drone.","initiator"],
+      ["Smokes / walls / vision denial.","controller"],
+      ["Traps / slows / gadgets.","sentinel"],
     ]}},
-    { fr:{q:"En situation très tendue, tu :", a:[
-      ["Crées de la distance et re-angles.","Jett"],
-      ["Forces l’erreur adverse.","Raze"],
-      ["Joues le snowball mental.","Reyna"],
-      ["Gagnes du temps pour revenir.","Phoenix"],
-      ["Manipules les attentes.","Yoru"],
-      ["Submerges au rythme.","Neon"],
-      ["Cherches le duel le plus “juste”.","Iso"],
-    ]}, en:{q:"In high pressure, you:", a:[
-      ["Create distance and re-angle.","Jett"],
-      ["Force an enemy mistake.","Raze"],
-      ["Play the mental snowball.","Reyna"],
-      ["Buy time to come back.","Phoenix"],
-      ["Manipulate expectations.","Yoru"],
-      ["Overwhelm with pace.","Neon"],
-      ["Look for the fairest duel.","Iso"],
+    { fr:{ q:"Ton niveau mécanique (mécaniques pures) ?", a:[
+      ["Très élevé, je veux en profiter.","duelist"],
+      ["Bon, mais je préfère aider l’entrée.","initiator"],
+      ["Moyen : je gagne via utilité.","controller"],
+      ["Variable : je mise sur le placement.","sentinel"],
+    ]}, en:{ q:"Your raw mechanics level?", a:[
+      ["Very high, I want to leverage it.","duelist"],
+      ["Good, but I prefer enabling entry.","initiator"],
+      ["Average: I win through utility.","controller"],
+      ["Situational: I rely on positioning.","sentinel"],
+    ]}},
+    { fr:{ q:"Tu veux être :", a:[
+      ["Le joueur flashy.","duelist"],
+      ["Celui qui déclenche l’action.","initiator"],
+      ["Le cerveau du round.","controller"],
+      ["Le pilier solide.","sentinel"],
+    ]}, en:{ q:"You want to be:", a:[
+      ["The flashy player.","duelist"],
+      ["The play starter.","initiator"],
+      ["The brain of the round.","controller"],
+      ["The solid anchor.","sentinel"],
     ]}},
   ];
 
-  // INITIATORS (6 agents => 6 réponses)
-  // Sova / Skye / Fade / Breach / KAY/O / Gekko
-  const AGENT_Q_INITIATOR = [
-    { fr:{q:"Quand ton équipe hésite, tu aides surtout en :", a:[
-      ["Donnant une info claire avant d’agir.","Sova"],
-      ["Rassurant et lançant l’action.","Skye"],
-      ["Faisant sentir une présence oppressante.","Fade"],
-      ["Créant un moment “go” très net.","Breach"],
-      ["Coupant les options adverses.","KAY/O"],
-      ["Trouvant une solution simple et pratique.","Gekko"],
-    ]}, en:{q:"When your team hesitates, you help by:", a:[
-      ["Providing clear info before acting.","Sova"],
-      ["Reassuring and starting the action.","Skye"],
-      ["Making your presence feel oppressive.","Fade"],
-      ["Creating a very clear 'go' moment.","Breach"],
-      ["Cutting enemy options.","KAY/O"],
-      ["Finding a simple practical solution.","Gekko"],
-    ]}},
-    { fr:{q:"Ton utilitaire idéal doit :", a:[
-      ["Confirmer une zone sans débat.","Sova"],
-      ["Ouvrir une entrée propre pour l’équipe.","Skye"],
-      ["Mettre l’adversaire mal à l’aise.","Fade"],
-      ["Déstructurer un push d’un coup.","Breach"],
-      ["Empêcher les ‘combos’ adverses.","KAY/O"],
-      ["Donner plusieurs petites options faciles.","Gekko"],
-    ]}, en:{q:"Your ideal utility should:", a:[
-      ["Confirm an area clearly.","Sova"],
-      ["Open a clean entry for the team.","Skye"],
-      ["Make the enemy uncomfortable.","Fade"],
-      ["Shatter a push in one go.","Breach"],
-      ["Stop enemy combos.","KAY/O"],
-      ["Give several easy options.","Gekko"],
-    ]}},
-    { fr:{q:"En défense, tu préfères :", a:[
-      ["Lire la map et prévenir tôt.","Sova"],
-      ["Être proche pour aider au contact.","Skye"],
-      ["Mettre la pression même en défense.","Fade"],
-      ["Casser le rythme d’un push.","Breach"],
-      ["Réduire l’utilité adverse.","KAY/O"],
-      ["Réagir vite avec des outils simples.","Gekko"],
-    ]}, en:{q:"On defense, you prefer:", a:[
-      ["Read the map and warn early.","Sova"],
-      ["Stay close to help at contact.","Skye"],
-      ["Keep pressure even on defense.","Fade"],
-      ["Break a push’s rhythm.","Breach"],
-      ["Reduce enemy utility.","KAY/O"],
-      ["React fast with simple tools.","Gekko"],
-    ]}},
-    { fr:{q:"En retake, ton approche naturelle :", a:[
-      ["Structurer l’info avant d’entrer.","Sova"],
-      ["Rentrer avec l’équipe et sécuriser.","Skye"],
-      ["Traquer et isoler mentalement.","Fade"],
-      ["Créer une fenêtre d’entrée brutale.","Breach"],
-      ["Neutraliser les menaces utilitaires.","KAY/O"],
-      ["Récupérer la situation avec flexibilité.","Gekko"],
-    ]}, en:{q:"On retake, your natural approach:", a:[
-      ["Structure info before going in.","Sova"],
-      ["Go in with the team and secure.","Skye"],
-      ["Hunt and isolate mentally.","Fade"],
-      ["Create a brutal entry window.","Breach"],
-      ["Neutralize utility threats.","KAY/O"],
-      ["Recover the situation with flexibility.","Gekko"],
-    ]}},
-    { fr:{q:"Tu es le plus utile quand :", a:[
-      ["Tes calls sont basés sur des certitudes.","Sova"],
-      ["Tu guides ton entry avec confiance.","Skye"],
-      ["Tu fais douter les ennemis.","Fade"],
-      ["Tu imposes un timing clair.","Breach"],
-      ["Tu forces les ennemis à jouer ‘nu’.","KAY/O"],
-      ["Tu donnes des solutions rapides à l’équipe.","Gekko"],
-    ]}, en:{q:"You’re most useful when:", a:[
-      ["Your calls are based on certainty.","Sova"],
-      ["You guide entry with confidence.","Skye"],
-      ["You make enemies doubt.","Fade"],
-      ["You impose a clear timing.","Breach"],
-      ["You force enemies to play 'naked'.","KAY/O"],
-      ["You give fast solutions to the team.","Gekko"],
-    ]}},
-    { fr:{q:"Quand tu n’as pas l’info, tu :", a:[
-      ["Cherches à la créer proprement.","Sova"],
-      ["Préfères tester avec l’équipe.","Skye"],
-      ["Mets la pression pour provoquer une erreur.","Fade"],
-      ["Forces un moment pour obtenir une réaction.","Breach"],
-      ["Coupes les options et observes.","KAY/O"],
-      ["Tentes une option simple et adaptable.","Gekko"],
-    ]}, en:{q:"When you lack info, you:", a:[
-      ["Try to create it cleanly.","Sova"],
-      ["Prefer to test with the team.","Skye"],
-      ["Apply pressure to force mistakes.","Fade"],
-      ["Force a moment to get a reaction.","Breach"],
-      ["Cut options and observe.","KAY/O"],
-      ["Try a simple adaptable option.","Gekko"],
-    ]}},
-    { fr:{q:"Ton style de leadership :", a:[
-      ["Analytique.","Sova"],
-      ["Encourageant.","Skye"],
-      ["Oppressant.","Fade"],
-      ["Décisif.","Breach"],
-      ["Anti-plan adverse.","KAY/O"],
-      ["Pratique.","Gekko"],
-    ]}, en:{q:"Your leadership style:", a:[
-      ["Analytical.","Sova"],
-      ["Encouraging.","Skye"],
-      ["Oppressive.","Fade"],
-      ["Decisive.","Breach"],
-      ["Anti-enemy plan.","KAY/O"],
-      ["Practical.","Gekko"],
-    ]}},
-    { fr:{q:"Ce qui te tilt le plus :", a:[
-      ["Le flou / les infos contradictoires.","Sova"],
-      ["Une équipe qui n’ose pas entrer.","Skye"],
-      ["Des ennemis qui jouent trop safe.","Fade"],
-      ["Un push qui traîne trop.","Breach"],
-      ["Une compo ennemie trop utilitaire.","KAY/O"],
-      ["Des situations ‘complexes’ pour rien.","Gekko"],
-    ]}, en:{q:"What tilts you most:", a:[
-      ["Blur / contradictory info.","Sova"],
-      ["A team that won’t commit.","Skye"],
-      ["Enemies playing too safe.","Fade"],
-      ["A push that drags on.","Breach"],
-      ["An enemy comp too utility-heavy.","KAY/O"],
-      ["Situations that are complex for no reason.","Gekko"],
-    ]}},
-    { fr:{q:"Si tu dois résumer ton impact :", a:[
-      ["Info fiable.","Sova"],
-      ["Entrée sécurisée.","Skye"],
-      ["Pression mentale.","Fade"],
-      ["Go timing.","Breach"],
-      ["Neutralisation.","KAY/O"],
-      ["Polyvalence simple.","Gekko"],
-    ]}, en:{q:"If you summarize your impact:", a:[
-      ["Reliable info.","Sova"],
-      ["Secure entry.","Skye"],
-      ["Mental pressure.","Fade"],
-      ["Go timing.","Breach"],
-      ["Neutralization.","KAY/O"],
-      ["Simple versatility.","Gekko"],
-    ]}},
-    { fr:{q:"Quand ça part en chaos, tu :", a:[
-      ["Reviens à l’info pour calmer le jeu.","Sova"],
-      ["Aides ton équipe à avancer ensemble.","Skye"],
-      ["Entretiens la pression pour étouffer.","Fade"],
-      ["Crées un ‘stop’ net dans le chaos.","Breach"],
-      ["Coupe les outils pour simplifier.","KAY/O"],
-      ["Trouves l’option la plus simple et efficace.","Gekko"],
-    ]}, en:{q:"When it becomes chaotic, you:", a:[
-      ["Return to info to stabilize.","Sova"],
-      ["Help your team move together.","Skye"],
-      ["Keep pressure to suffocate.","Fade"],
-      ["Create a hard 'stop' in the chaos.","Breach"],
-      ["Cut tools to simplify.","KAY/O"],
-      ["Find the simplest effective option.","Gekko"],
-    ]}},
-  ];
+  // --- Phase 2: questions agents (déjà fournies dans la version précédente)
+  // Pour garder ce message lisible, je laisse les objets existants identiques:
+  // ✅ AGENTS_BY_ROLE
+  // ✅ AGENT_QUESTIONS_BY_ROLE
+  // ✅ TIEBREAK_BY_ROLE (tiebreaks par rôle)
+  //
+  // 👉 IMPORTANT: les agents sont cachés pendant les bonus:
+  // - pas de "X vs Y"
+  // - badge neutre "Décision finale / Final decision"
+  //
+  // (Tu peux coller ici tes blocs complets AGENT_QUESTIONS_BY_ROLE + TIEBREAK_BY_ROLE de ton fichier actuel.)
 
-  // CONTROLLERS (6 agents => 6 réponses)
-  // Omen / Brimstone / Viper / Astra / Harbor / Clove
-  const AGENT_Q_CONTROLLER = [
-    { fr:{q:"Quand tu contrôles un round, tu préfères :", a:[
-      ["Jouer sur les timings et l’incertitude.","Omen"],
-      ["Une exécution simple et carrée.","Brimstone"],
-      ["Asphyxier une zone dans la durée.","Viper"],
-      ["Penser la carte comme un puzzle.","Astra"],
-      ["Protéger le passage et avancer en sécurité.","Harbor"],
-      ["Garder la capacité de re-fight et relancer.","Clove"],
-    ]}, en:{q:"When you control a round, you prefer:", a:[
-      ["Play timings and uncertainty.","Omen"],
-      ["A simple clean execution.","Brimstone"],
-      ["Suffocate an area over time.","Viper"],
-      ["Treat the map like a puzzle.","Astra"],
-      ["Protect the path and move safely.","Harbor"],
-      ["Keep re-fight potential and restart fights.","Clove"],
-    ]}},
-    { fr:{q:"Ton utilité idéale sert à :", a:[
-      ["Créer du doute chez l’ennemi.","Omen"],
-      ["Structurer l’entrée sans prise de tête.","Brimstone"],
-      ["Verrouiller un plan sur plusieurs secondes.","Viper"],
-      ["Coordonner à distance.","Astra"],
-      ["Couper proprement et protéger.","Harbor"],
-      ["Mettre du tempo agressif.","Clove"],
-    ]}, en:{q:"Your ideal utility is for:", a:[
-      ["Creating doubt in the enemy.","Omen"],
-      ["Structuring entry simply.","Brimstone"],
-      ["Locking a plan for several seconds.","Viper"],
-      ["Coordinating from distance.","Astra"],
-      ["Cutting cleanly and protecting.","Harbor"],
-      ["Bringing aggressive tempo.","Clove"],
-    ]}},
-    { fr:{q:"En défense, tu te sens fort quand :", a:[
-      ["Tu peux jouer sur le timing.","Omen"],
-      ["Tu peux tenir avec un plan clair.","Brimstone"],
-      ["Tu peux rendre une zone invivable.","Viper"],
-      ["Tu peux contrôler plusieurs zones.","Astra"],
-      ["Tu peux offrir une ‘safe lane’ à l’équipe.","Harbor"],
-      ["Tu peux contester et recontester.","Clove"],
-    ]}, en:{q:"On defense, you feel strong when:", a:[
-      ["You can play timing.","Omen"],
-      ["You can hold with a clear plan.","Brimstone"],
-      ["You can make an area unlivable.","Viper"],
-      ["You can control multiple areas.","Astra"],
-      ["You can give a safe lane to your team.","Harbor"],
-      ["You can contest and re-contest.","Clove"],
-    ]}},
-    { fr:{q:"En retake, tu préfères :", a:[
-      ["Déplacer la pression par surprise.","Omen"],
-      ["Exécuter proprement en équipe.","Brimstone"],
-      ["Gagner du temps et user l’ennemi.","Viper"],
-      ["Créer l’ouverture au bon moment.","Astra"],
-      ["Couvrir l’entrée et sécuriser.","Harbor"],
-      ["Relancer le fight dès qu’il y a une fenêtre.","Clove"],
-    ]}, en:{q:"On retake, you prefer:", a:[
-      ["Shift pressure with surprise.","Omen"],
-      ["Execute cleanly with the team.","Brimstone"],
-      ["Buy time and wear them down.","Viper"],
-      ["Create the opening at the right time.","Astra"],
-      ["Cover entry and secure.","Harbor"],
-      ["Restart fights when a window appears.","Clove"],
-    ]}},
-    { fr:{q:"Ton point fort mental :", a:[
-      ["Bluff / imprévu.","Omen"],
-      ["Discipline / régularité.","Brimstone"],
-      ["Patience / contrôle long.","Viper"],
-      ["Vision macro.","Astra"],
-      ["Protection / stabilité.","Harbor"],
-      ["Agressivité contrôlée.","Clove"],
-    ]}, en:{q:"Your mental strength:", a:[
-      ["Bluff / unpredictability.","Omen"],
-      ["Discipline / consistency.","Brimstone"],
-      ["Patience / long control.","Viper"],
-      ["Macro vision.","Astra"],
-      ["Protection / stability.","Harbor"],
-      ["Controlled aggression.","Clove"],
-    ]}},
-    { fr:{q:"Ce qui te tilt le plus :", a:[
-      ["Quand le round est trop ‘linéaire’.","Omen"],
-      ["Quand l’équipe ne suit pas le plan.","Brimstone"],
-      ["Quand on te force à bouger sans cesse.","Viper"],
-      ["Quand le timing d’équipe est mauvais.","Astra"],
-      ["Quand l’équipe se disperse.","Harbor"],
-      ["Quand on ne profite pas des fenêtres de fight.","Clove"],
-    ]}, en:{q:"What tilts you most:", a:[
-      ["When a round is too linear.","Omen"],
-      ["When the team won’t follow the plan.","Brimstone"],
-      ["When you’re forced to move nonstop.","Viper"],
-      ["When team timing is bad.","Astra"],
-      ["When the team scatters.","Harbor"],
-      ["When you don’t capitalize fight windows.","Clove"],
-    ]}},
-    { fr:{q:"Ton style de win condition :", a:[
-      ["Confusion.","Omen"],
-      ["Structure.","Brimstone"],
-      ["Zone denial durable.","Viper"],
-      ["Coordination.","Astra"],
-      ["Safe push.","Harbor"],
-      ["Momentum / re-fight.","Clove"],
-    ]}, en:{q:"Your win condition style:", a:[
-      ["Confusion.","Omen"],
-      ["Structure.","Brimstone"],
-      ["Durable zone denial.","Viper"],
-      ["Coordination.","Astra"],
-      ["Safe push.","Harbor"],
-      ["Momentum / re-fight.","Clove"],
-    ]}},
-    { fr:{q:"Quand tu n’as pas le contrôle, tu :", a:[
-      ["Crées un doute et changes l’angle du round.","Omen"],
-      ["Simplifies et remets un plan clair.","Brimstone"],
-      ["Reprends une zone et la verrouilles.","Viper"],
-      ["Replaces tes pièces pour reprendre la macro.","Astra"],
-      ["Protèges une trajectoire et reconstruis.","Harbor"],
-      ["Contestes pour relancer la dynamique.","Clove"],
-    ]}, en:{q:"When you lack control, you:", a:[
-      ["Create doubt and change the round’s angle.","Omen"],
-      ["Simplify and restore a clear plan.","Brimstone"],
-      ["Reclaim an area and lock it.","Viper"],
-      ["Reposition your pieces to regain macro.","Astra"],
-      ["Protect a path and rebuild.","Harbor"],
-      ["Contest to restart momentum.","Clove"],
-    ]}},
-    { fr:{q:"Tu te décris comme :", a:[
-      ["Discret.","Omen"],
-      ["Méthodique.","Brimstone"],
-      ["Intransigeant.","Viper"],
-      ["Calculateur.","Astra"],
-      ["Protecteur.","Harbor"],
-      ["Combatif.","Clove"],
-    ]}, en:{q:"You describe yourself as:", a:[
-      ["Quiet.","Omen"],
-      ["Methodical.","Brimstone"],
-      ["Uncompromising.","Viper"],
-      ["Calculating.","Astra"],
-      ["Protective.","Harbor"],
-      ["Fighty.","Clove"],
-    ]}},
-    { fr:{q:"Si tu résumes ton impact :", a:[
-      ["Timings & mindgames.","Omen"],
-      ["Exécutions propres.","Brimstone"],
-      ["Contrôle long.","Viper"],
-      ["Macro / contrôle global.","Astra"],
-      ["Protection & couloirs sûrs.","Harbor"],
-      ["Re-fight & tempo.","Clove"],
-    ]}, en:{q:"If you summarize your impact:", a:[
-      ["Timings & mindgames.","Omen"],
-      ["Clean executes.","Brimstone"],
-      ["Long control.","Viper"],
-      ["Macro / global control.","Astra"],
-      ["Protection & safe lanes.","Harbor"],
-      ["Re-fight & tempo.","Clove"],
-    ]}},
-  ];
-
-  // SENTINELS (5 agents => 5 réponses)
-  // Killjoy / Cypher / Sage / Chamber / Deadlock
-  const AGENT_Q_SENTINEL = [
-    { fr:{q:"Quand tu défends, tu préfères :", a:[
-      ["Une défense ‘automatique’ et structurée.","Killjoy"],
-      ["Observer et piéger l’info.","Cypher"],
-      ["Protéger et stabiliser l’équipe.","Sage"],
-      ["Punir par la précision.","Chamber"],
-      ["Bloquer et verrouiller une zone.","Deadlock"],
-    ]}, en:{q:"When defending, you prefer:", a:[
-      ["An automated structured defense.","Killjoy"],
-      ["Observe and trap info.","Cypher"],
-      ["Protect and stabilize the team.","Sage"],
-      ["Punish with precision.","Chamber"],
-      ["Block and lock an area.","Deadlock"],
-    ]}},
-    { fr:{q:"En attaque, ton rôle naturel :", a:[
-      ["Sécuriser le flank avec rigueur.","Killjoy"],
-      ["Garder l’info et contrôler les rotations.","Cypher"],
-      ["Assurer la survie du groupe.","Sage"],
-      ["Chercher un pick propre.","Chamber"],
-      ["Sécuriser une zone clé et empêcher les retakes.","Deadlock"],
-    ]}, en:{q:"On attack, your natural job:", a:[
-      ["Secure flank with rigor.","Killjoy"],
-      ["Hold info and control rotations.","Cypher"],
-      ["Keep the group alive.","Sage"],
-      ["Look for a clean pick.","Chamber"],
-      ["Secure key space and stop retakes.","Deadlock"],
-    ]}},
-    { fr:{q:"Ce qui te fait le plus plaisir :", a:[
-      ["Un setup qui gagne tout seul.","Killjoy"],
-      ["Un round gagné par la lecture.","Cypher"],
-      ["Sauver un round pour l’équipe.","Sage"],
-      ["Un duel clean qui fait basculer.","Chamber"],
-      ["Un ennemi complètement stoppé.","Deadlock"],
-    ]}, en:{q:"What you enjoy most:", a:[
-      ["A setup that wins by itself.","Killjoy"],
-      ["Winning through reading them.","Cypher"],
-      ["Saving a round for the team.","Sage"],
-      ["A clean duel that flips the round.","Chamber"],
-      ["An enemy fully stopped.","Deadlock"],
-    ]}},
-    { fr:{q:"En retake, tu préfères :", a:[
-      ["Récupérer une zone avec méthode.","Killjoy"],
-      ["Avoir l’info avant d’avancer.","Cypher"],
-      ["Aider l’équipe à survivre et progresser.","Sage"],
-      ["Prendre un pick puis reculer.","Chamber"],
-      ["Fermer un passage pour réduire les options.","Deadlock"],
-    ]}, en:{q:"On retake, you prefer:", a:[
-      ["Reclaim space methodically.","Killjoy"],
-      ["Get info before moving.","Cypher"],
-      ["Help the team survive and progress.","Sage"],
-      ["Take a pick then fall back.","Chamber"],
-      ["Close a path to reduce options.","Deadlock"],
-    ]}},
-    { fr:{q:"Quand ça devient chaotique, tu :", a:[
-      ["Reviens à un plan structuré.","Killjoy"],
-      ["Cherches l’info pour remettre de l’ordre.","Cypher"],
-      ["Ralentis pour stabiliser.","Sage"],
-      ["Profites du chaos pour punir.","Chamber"],
-      ["Bloques pour stopper la vague.","Deadlock"],
-    ]}, en:{q:"When it gets chaotic, you:", a:[
-      ["Return to a structured plan.","Killjoy"],
-      ["Look for info to restore order.","Cypher"],
-      ["Slow it down to stabilize.","Sage"],
-      ["Use the chaos to punish.","Chamber"],
-      ["Block to stop the wave.","Deadlock"],
-    ]}},
-    { fr:{q:"Ton style mental :", a:[
-      ["Ingénieur.","Killjoy"],
-      ["Analyste.","Cypher"],
-      ["Gardien.","Sage"],
-      ["Tireur.","Chamber"],
-      ["Mur.","Deadlock"],
-    ]}, en:{q:"Your mental style:", a:[
-      ["Engineer.","Killjoy"],
-      ["Analyst.","Cypher"],
-      ["Guardian.","Sage"],
-      ["Sharpshooter.","Chamber"],
-      ["Wall.","Deadlock"],
-    ]}},
-    { fr:{q:"Ton défaut le plus probable :", a:[
-      ["Trop attaché au plan.","Killjoy"],
-      ["Trop dans l’observation.","Cypher"],
-      ["Trop dans l’aide, pas assez d’initiative.","Sage"],
-      ["Trop individualiste.","Chamber"],
-      ["Trop rigide.","Deadlock"],
-    ]}, en:{q:"Your most likely flaw:", a:[
-      ["Too attached to the plan.","Killjoy"],
-      ["Too much observation.","Cypher"],
-      ["Too supportive, not enough initiative.","Sage"],
-      ["Too individualistic.","Chamber"],
-      ["Too rigid.","Deadlock"],
-    ]}},
-    { fr:{q:"Tu te sens fort quand :", a:[
-      ["Tout est sous contrôle.","Killjoy"],
-      ["Tu sais où ils sont / vont aller.","Cypher"],
-      ["Ton équipe tient grâce à toi.","Sage"],
-      ["Tu imposes le respect sur les angles.","Chamber"],
-      ["Tu fermes les options.","Deadlock"],
-    ]}, en:{q:"You feel strong when:", a:[
-      ["Everything is under control.","Killjoy"],
-      ["You know where they are / will go.","Cypher"],
-      ["Your team holds because of you.","Sage"],
-      ["You command respect on angles.","Chamber"],
-      ["You close options.","Deadlock"],
-    ]}},
-    { fr:{q:"Ton style de victoire :", a:[
-      ["Setup.","Killjoy"],
-      ["Info.","Cypher"],
-      ["Soutien.","Sage"],
-      ["Pick.","Chamber"],
-      ["Verrouillage.","Deadlock"],
-    ]}, en:{q:"Your win style:", a:[
-      ["Setup.","Killjoy"],
-      ["Info.","Cypher"],
-      ["Support.","Sage"],
-      ["Pick.","Chamber"],
-      ["Lockdown.","Deadlock"],
-    ]}},
-    { fr:{q:"Si tu résumes ton rôle en un mot :", a:[
-      ["Contrôle.","Killjoy"],
-      ["Surveillance.","Cypher"],
-      ["Protection.","Sage"],
-      ["Punition.","Chamber"],
-      ["Blocage.","Deadlock"],
-    ]}, en:{q:"If you summarize your role in one word:", a:[
-      ["Control.","Killjoy"],
-      ["Surveillance.","Cypher"],
-      ["Protection.","Sage"],
-      ["Punishment.","Chamber"],
-      ["Blockage.","Deadlock"],
-    ]}},
-  ];
-
-  // -------------------------
-  // Agent banks per role
-  // -------------------------
+  // --- Copie/colle ici depuis ton fichier actuel (ou depuis ma réponse précédente):
   const AGENTS_BY_ROLE = {
     duelist: ["Jett","Raze","Reyna","Phoenix","Yoru","Neon","Iso"],
     initiator: ["Sova","Skye","Fade","Breach","KAY/O","Gekko"],
@@ -1242,414 +479,12 @@
     sentinel: ["Killjoy","Cypher","Sage","Chamber","Deadlock"]
   };
 
-  const AGENT_QUESTIONS_BY_ROLE = {
-    duelist: AGENT_Q_DUELIST,
-    initiator: AGENT_Q_INITIATOR,
-    controller: AGENT_Q_CONTROLLER,
-    sentinel: AGENT_Q_SENTINEL
-  };
-
-  // -------------------------
-  // Agent tiebreak questions (PAIRWISE) for ALL roles
-  // Each is 2 options: A -> agent1, B -> agent2 (order as written).
-  // -------------------------
-  const TIEBREAK_BY_ROLE = {
-    duelist: {
-      // Jett
-      [pairKey("Jett","Raze")]: {
-        fr:{ q:"Quand un round doit basculer, tu préfères :", a:[
-          ["Créer une ouverture propre.","Jett"],
-          ["Faire exploser la situation.","Raze"],
-        ]},
-        en:{ q:"When a round must flip, you prefer to:", a:[
-          ["Create a clean opening.","Jett"],
-          ["Explode the situation.","Raze"],
-        ]}
-      },
-      [pairKey("Jett","Reyna")]: {
-        fr:{ q:"En duel important, tu comptes surtout sur :", a:[
-          ["Être difficile à punir.","Jett"],
-          ["Prendre le contrôle mental.","Reyna"],
-        ]},
-        en:{ q:"In a key duel, you rely on:", a:[
-          ["Being hard to punish.","Jett"],
-          ["Taking mental control.","Reyna"],
-        ]}
-      },
-      [pairKey("Jett","Phoenix")]: {
-        fr:{ q:"Si tu prends un risque :", a:[
-          ["Tu veux pouvoir t’échapper.","Jett"],
-          ["Tu veux pouvoir revenir.","Phoenix"],
-        ]},
-        en:{ q:"If you take a risk:", a:[
-          ["You want to be able to escape.","Jett"],
-          ["You want to be able to come back.","Phoenix"],
-        ]}
-      },
-      [pairKey("Jett","Yoru")]: {
-        fr:{ q:"Tu préfères gagner grâce :", a:[
-          ["À ta mécanique.","Jett"],
-          ["À ton imprévisibilité.","Yoru"],
-        ]},
-        en:{ q:"You prefer winning through:", a:[
-          ["Your mechanics.","Jett"],
-          ["Your unpredictability.","Yoru"],
-        ]}
-      },
-      [pairKey("Jett","Neon")]: {
-        fr:{ q:"Ton style naturel est :", a:[
-          ["Maîtrisé.","Jett"],
-          ["Électrique.","Neon"],
-        ]},
-        en:{ q:"Your natural style is:", a:[
-          ["Controlled.","Jett"],
-          ["Electric.","Neon"],
-        ]}
-      },
-      [pairKey("Jett","Iso")]: {
-        fr:{ q:"Tu te sens plus fort quand :", a:[
-          ["Tu peux bouger librement.","Jett"],
-          ["Le duel est frontal.","Iso"],
-        ]},
-        en:{ q:"You feel stronger when:", a:[
-          ["You can move freely.","Jett"],
-          ["The duel is straight-up.","Iso"],
-        ]}
-      },
-
-      // Raze
-      [pairKey("Raze","Reyna")]: {
-        fr:{ q:"Tu préfères :", a:[
-          ["Mettre la pression sur plusieurs joueurs.","Raze"],
-          ["Dominer un joueur à la fois.","Reyna"],
-        ]},
-        en:{ q:"You prefer to:", a:[
-          ["Pressure multiple players.","Raze"],
-          ["Dominate one player at a time.","Reyna"],
-        ]}
-      },
-      [pairKey("Raze","Phoenix")]: {
-        fr:{ q:"Tu veux que ton impact soit :", a:[
-          ["Brutal.","Raze"],
-          ["Progressif.","Phoenix"],
-        ]},
-        en:{ q:"You want your impact to be:", a:[
-          ["Brutal.","Raze"],
-          ["Progressive.","Phoenix"],
-        ]}
-      },
-      [pairKey("Raze","Yoru")]: {
-        fr:{ q:"Tu gagnes plus souvent grâce :", a:[
-          ["À la pression constante.","Raze"],
-          ["À la confusion.","Yoru"],
-        ]},
-        en:{ q:"You win more often through:", a:[
-          ["Constant pressure.","Raze"],
-          ["Confusion.","Yoru"],
-        ]}
-      },
-      [pairKey("Raze","Neon")]: {
-        fr:{ q:"Tu es plus :", a:[
-          ["Explosion.","Raze"],
-          ["Vitesse.","Neon"],
-        ]},
-        en:{ q:"You are more:", a:[
-          ["Explosion.","Raze"],
-          ["Speed.","Neon"],
-        ]}
-      },
-      [pairKey("Raze","Iso")]: {
-        fr:{ q:"Tu préfères :", a:[
-          ["Déséquilibrer.","Raze"],
-          ["Duel pur.","Iso"],
-        ]},
-        en:{ q:"You prefer:", a:[
-          ["Disrupting.","Raze"],
-          ["Pure duel.","Iso"],
-        ]}
-      },
-
-      // Reyna
-      [pairKey("Reyna","Phoenix")]: {
-        fr:{ q:"Tu te sens le plus fort quand :", a:[
-          ["Tu prends l’avantage.","Reyna"],
-          ["Tu peux revenir.","Phoenix"],
-        ]},
-        en:{ q:"You feel strongest when:", a:[
-          ["You gain the advantage.","Reyna"],
-          ["You can come back.","Phoenix"],
-        ]}
-      },
-      [pairKey("Reyna","Yoru")]: {
-        fr:{ q:"Tu préfères :", a:[
-          ["Punir.","Reyna"],
-          ["Tromper.","Yoru"],
-        ]},
-        en:{ q:"You prefer to:", a:[
-          ["Punish.","Reyna"],
-          ["Trick.","Yoru"],
-        ]}
-      },
-      [pairKey("Reyna","Neon")]: {
-        fr:{ q:"Tu es plus :", a:[
-          ["Prédateur.","Reyna"],
-          ["Pression constante.","Neon"],
-        ]},
-        en:{ q:"You are more:", a:[
-          ["Predator.","Reyna"],
-          ["Constant pressure.","Neon"],
-        ]}
-      },
-      [pairKey("Reyna","Iso")]: {
-        fr:{ q:"Tu préfères :", a:[
-          ["Snowball.","Reyna"],
-          ["Duel équilibré.","Iso"],
-        ]},
-        en:{ q:"You prefer:", a:[
-          ["Snowballing.","Reyna"],
-          ["Balanced duel.","Iso"],
-        ]}
-      },
-
-      // Phoenix
-      [pairKey("Phoenix","Yoru")]: {
-        fr:{ q:"Tu préfères :", a:[
-          ["Stabiliser le round.","Phoenix"],
-          ["Le désorienter.","Yoru"],
-        ]},
-        en:{ q:"You prefer to:", a:[
-          ["Stabilize the round.","Phoenix"],
-          ["Disorient it.","Yoru"],
-        ]}
-      },
-      [pairKey("Phoenix","Neon")]: {
-        fr:{ q:"Tu es plus :", a:[
-          ["Résilient.","Phoenix"],
-          ["Accélérateur.","Neon"],
-        ]},
-        en:{ q:"You are more:", a:[
-          ["Resilient.","Phoenix"],
-          ["Accelerator.","Neon"],
-        ]}
-      },
-      [pairKey("Phoenix","Iso")]: {
-        fr:{ q:"Tu préfères :", a:[
-          ["Deuxième chance.","Phoenix"],
-          ["Face à face.","Iso"],
-        ]},
-        en:{ q:"You prefer:", a:[
-          ["Second chance.","Phoenix"],
-          ["Face-to-face.","Iso"],
-        ]}
-      },
-
-      // Yoru
-      [pairKey("Yoru","Neon")]: {
-        fr:{ q:"Tu es plus :", a:[
-          ["Imprévisible.","Yoru"],
-          ["Rapide.","Neon"],
-        ]},
-        en:{ q:"You are more:", a:[
-          ["Unpredictable.","Yoru"],
-          ["Fast.","Neon"],
-        ]}
-      },
-      [pairKey("Yoru","Iso")]: {
-        fr:{ q:"Tu préfères :", a:[
-          ["Manipuler.","Yoru"],
-          ["Défier.","Iso"],
-        ]},
-        en:{ q:"You prefer to:", a:[
-          ["Manipulate.","Yoru"],
-          ["Challenge.","Iso"],
-        ]}
-      },
-
-      // Neon
-      [pairKey("Neon","Iso")]: {
-        fr:{ q:"Tu es plus :", a:[
-          ["Mouvement.","Neon"],
-          ["Duel.","Iso"],
-        ]},
-        en:{ q:"You are more:", a:[
-          ["Movement.","Neon"],
-          ["Duel.","Iso"],
-        ]}
-      },
-    },
-
-    initiator: {
-      // Agents: Sova, Skye, Fade, Breach, KAY/O, Gekko (15 pairs)
-      [pairKey("Sova","Skye")]: {
-        fr:{ q:"Tu aides surtout ton équipe en :", a:[["Clarifiant l’info.","Sova"],["Boostant la confiance au contact.","Skye"]] },
-        en:{ q:"You help your team mainly by:", a:[["Clarifying info.","Sova"],["Boosting confidence at contact.","Skye"]] }
-      },
-      [pairKey("Sova","Fade")]: {
-        fr:{ q:"Tu veux que l’ennemi ressente :", a:[["Qu’il est repéré.","Sova"],["Qu’il est traqué.","Fade"]] },
-        en:{ q:"You want the enemy to feel:", a:[["They are spotted.","Sova"],["They are hunted.","Fade"]] }
-      },
-      [pairKey("Sova","Breach")]: {
-        fr:{ q:"Tu préfères :", a:[["Préparer avant d’entrer.","Sova"],["Créer un ‘GO’ net.","Breach"]] },
-        en:{ q:"You prefer to:", a:[["Prep before entry.","Sova"],["Create a clear 'GO'.","Breach"]] }
-      },
-      [pairKey("Sova","KAY/O")]: {
-        fr:{ q:"Ton impact idéal :", a:[["Info fiable.","Sova"],["Réduire les options adverses.","KAY/O"]] },
-        en:{ q:"Your ideal impact:", a:[["Reliable info.","Sova"],["Reduce enemy options.","KAY/O"]] }
-      },
-      [pairKey("Sova","Gekko")]: {
-        fr:{ q:"Tu préfères :", a:[["Certitude.","Sova"],["Solutions simples et flexibles.","Gekko"]] },
-        en:{ q:"You prefer:", a:[["Certainty.","Sova"],["Simple flexible solutions.","Gekko"]] }
-      },
-      [pairKey("Skye","Fade")]: {
-        fr:{ q:"Tu te sens plus fort quand :", a:[["Tu accompagnes le contact.","Skye"],["Tu mets une pression mentale.","Fade"]] },
-        en:{ q:"You feel stronger when:", a:[["You accompany contact.","Skye"],["You apply mental pressure.","Fade"]] }
-      },
-      [pairKey("Skye","Breach")]: {
-        fr:{ q:"Tu préfères :", a:[["Faciliter l’entrée.","Skye"],["Forcer l’ouverture.","Breach"]] },
-        en:{ q:"You prefer to:", a:[["Enable entry.","Skye"],["Force the opening.","Breach"]] }
-      },
-      [pairKey("Skye","KAY/O")]: {
-        fr:{ q:"Ta priorité :", a:[["Mettre l’équipe à l’aise.","Skye"],["Casser les plans adverses.","KAY/O"]] },
-        en:{ q:"Your priority:", a:[["Make the team comfortable.","Skye"],["Break enemy plans.","KAY/O"]] }
-      },
-      [pairKey("Skye","Gekko")]: {
-        fr:{ q:"Tu es plus :", a:[["Leader de contact.","Skye"],["Pratique et adaptable.","Gekko"]] },
-        en:{ q:"You are more:", a:[["Contact leader.","Skye"],["Practical and adaptable.","Gekko"]] }
-      },
-      [pairKey("Fade","Breach")]: {
-        fr:{ q:"Tu préfères :", a:[["Étouffer progressivement.","Fade"],["Frapper d’un coup.","Breach"]] },
-        en:{ q:"You prefer to:", a:[["Suffocate gradually.","Fade"],["Hit in one go.","Breach"]] }
-      },
-      [pairKey("Fade","KAY/O")]: {
-        fr:{ q:"Tu veux surtout :", a:[["Les faire douter.","Fade"],["Les priver d’outils.","KAY/O"]] },
-        en:{ q:"You want mainly to:", a:[["Make them doubt.","Fade"],["Deny their tools.","KAY/O"]] }
-      },
-      [pairKey("Fade","Gekko")]: {
-        fr:{ q:"Ton style :", a:[["Oppressant.","Fade"],["Polyvalent simple.","Gekko"]] },
-        en:{ q:"Your style:", a:[["Oppressive.","Fade"],["Simple versatile.","Gekko"]] }
-      },
-      [pairKey("Breach","KAY/O")]: {
-        fr:{ q:"Tu préfères :", a:[["Créer une fenêtre d’entrée.","Breach"],["Neutraliser avant d’entrer.","KAY/O"]] },
-        en:{ q:"You prefer to:", a:[["Create an entry window.","Breach"],["Neutralize before entry.","KAY/O"]] }
-      },
-      [pairKey("Breach","Gekko")]: {
-        fr:{ q:"Tu es plus :", a:[["Impact direct.","Breach"],["Multi-options faciles.","Gekko"]] },
-        en:{ q:"You are more:", a:[["Direct impact.","Breach"],["Easy multi-options.","Gekko"]] }
-      },
-      [pairKey("KAY/O","Gekko")]: {
-        fr:{ q:"Tu préfères :", a:[["Anti-plan adverse.","KAY/O"],["Adaptation simple.","Gekko"]] },
-        en:{ q:"You prefer:", a:[["Anti-enemy plan.","KAY/O"],["Simple adaptation.","Gekko"]] }
-      },
-    },
-
-    controller: {
-      // Agents: Omen, Brimstone, Viper, Astra, Harbor, Clove (15 pairs)
-      [pairKey("Omen","Brimstone")]: {
-        fr:{ q:"Tu préfères gagner par :", a:[["Doute & timings.","Omen"],["Plan simple et propre.","Brimstone"]] },
-        en:{ q:"You prefer winning through:", a:[["Doubt & timings.","Omen"],["Simple clean plan.","Brimstone"]] }
-      },
-      [pairKey("Omen","Viper")]: {
-        fr:{ q:"Tu es plus :", a:[["Imprévu.","Omen"],["Contrôle long.","Viper"]] },
-        en:{ q:"You are more:", a:[["Unpredictable.","Omen"],["Long control.","Viper"]] }
-      },
-      [pairKey("Omen","Astra")]: {
-        fr:{ q:"Tu préfères :", a:[["Jouer le round au feeling.","Omen"],["Coordonner à distance.","Astra"]] },
-        en:{ q:"You prefer to:", a:[["Play by feel.","Omen"],["Coordinate from afar.","Astra"]] }
-      },
-      [pairKey("Omen","Harbor")]: {
-        fr:{ q:"Ta priorité :", a:[["Désorienter.","Omen"],["Protéger une trajectoire.","Harbor"]] },
-        en:{ q:"Your priority:", a:[["Disorient.","Omen"],["Protect a path.","Harbor"]] }
-      },
-      [pairKey("Omen","Clove")]: {
-        fr:{ q:"Tu préfères :", a:[["Mindgames.","Omen"],["Re-fight & tempo.","Clove"]] },
-        en:{ q:"You prefer:", a:[["Mindgames.","Omen"],["Re-fight & tempo.","Clove"]] }
-      },
-      [pairKey("Brimstone","Viper")]: {
-        fr:{ q:"Tu préfères :", a:[["Exécuter simple.","Brimstone"],["Verrouiller longtemps.","Viper"]] },
-        en:{ q:"You prefer to:", a:[["Execute simply.","Brimstone"],["Lock down longer.","Viper"]] }
-      },
-      [pairKey("Brimstone","Astra")]: {
-        fr:{ q:"Tu es plus :", a:[["Leader terrain.","Brimstone"],["Macro / puzzle.","Astra"]] },
-        en:{ q:"You are more:", a:[["Field leader.","Brimstone"],["Macro / puzzle.","Astra"]] }
-      },
-      [pairKey("Brimstone","Harbor")]: {
-        fr:{ q:"Tu préfères :", a:[["Plan carré.","Brimstone"],["Sécurité en avançant.","Harbor"]] },
-        en:{ q:"You prefer:", a:[["Clean plan.","Brimstone"],["Safety while moving.","Harbor"]] }
-      },
-      [pairKey("Brimstone","Clove")]: {
-        fr:{ q:"Tu préfères :", a:[["Structure.","Brimstone"],["Tempo agressif.","Clove"]] },
-        en:{ q:"You prefer:", a:[["Structure.","Brimstone"],["Aggressive tempo.","Clove"]] }
-      },
-      [pairKey("Viper","Astra")]: {
-        fr:{ q:"Tu contrôles plutôt :", a:[["Une zone dans le temps.","Viper"],["La map à distance.","Astra"]] },
-        en:{ q:"You control more:", a:[["An area over time.","Viper"],["The map from afar.","Astra"]] }
-      },
-      [pairKey("Viper","Harbor")]: {
-        fr:{ q:"Ton style :", a:[["Asphyxier.","Viper"],["Protéger & avancer.","Harbor"]] },
-        en:{ q:"Your style:", a:[["Suffocate.","Viper"],["Protect & advance.","Harbor"]] }
-      },
-      [pairKey("Viper","Clove")]: {
-        fr:{ q:"Tu préfères :", a:[["Contrôle long.","Viper"],["Relance de fights.","Clove"]] },
-        en:{ q:"You prefer:", a:[["Long control.","Viper"],["Fight resets.","Clove"]] }
-      },
-      [pairKey("Astra","Harbor")]: {
-        fr:{ q:"Tu préfères :", a:[["Coordination globale.","Astra"],["Sécurité locale.","Harbor"]] },
-        en:{ q:"You prefer:", a:[["Global coordination.","Astra"],["Local safety.","Harbor"]] }
-      },
-      [pairKey("Astra","Clove")]: {
-        fr:{ q:"Tu es plus :", a:[["Planificateur.","Astra"],["Combatif.","Clove"]] },
-        en:{ q:"You are more:", a:[["Planner.","Astra"],["Fighty.","Clove"]] }
-      },
-      [pairKey("Harbor","Clove")]: {
-        fr:{ q:"Tu préfères :", a:[["Protéger le groupe.","Harbor"],["Re-fight et tempo.","Clove"]] },
-        en:{ q:"You prefer:", a:[["Protect the group.","Harbor"],["Re-fight and tempo.","Clove"]] }
-      },
-    },
-
-    sentinel: {
-      // Agents: Killjoy, Cypher, Sage, Chamber, Deadlock (10 pairs)
-      [pairKey("Killjoy","Cypher")]: {
-        fr:{ q:"Tu préfères :", a:[["Setup structuré.","Killjoy"],["Lecture & info.","Cypher"]] },
-        en:{ q:"You prefer:", a:[["Structured setup.","Killjoy"],["Reading & info.","Cypher"]] }
-      },
-      [pairKey("Killjoy","Sage")]: {
-        fr:{ q:"Ta priorité :", a:[["Sécuriser par le plan.","Killjoy"],["Sécuriser par le soutien.","Sage"]] },
-        en:{ q:"Your priority:", a:[["Secure via plan.","Killjoy"],["Secure via support.","Sage"]] }
-      },
-      [pairKey("Killjoy","Chamber")]: {
-        fr:{ q:"Tu gagnes plutôt par :", a:[["Contrôle.","Killjoy"],["Punition en duel.","Chamber"]] },
-        en:{ q:"You win more through:", a:[["Control.","Killjoy"],["Duel punishment.","Chamber"]] }
-      },
-      [pairKey("Killjoy","Deadlock")]: {
-        fr:{ q:"Tu préfères :", a:[["Automatiser la défense.","Killjoy"],["Fermer les options.","Deadlock"]] },
-        en:{ q:"You prefer:", a:[["Automate defense.","Killjoy"],["Close options.","Deadlock"]] }
-      },
-      [pairKey("Cypher","Sage")]: {
-        fr:{ q:"Tu préfères :", a:[["Info et lecture.","Cypher"],["Protection et stabilité.","Sage"]] },
-        en:{ q:"You prefer:", a:[["Info and reading.","Cypher"],["Protection and stability.","Sage"]] }
-      },
-      [pairKey("Cypher","Chamber")]: {
-        fr:{ q:"Tu es plus :", a:[["Observateur.","Cypher"],["Punisseur.","Chamber"]] },
-        en:{ q:"You are more:", a:[["Observer.","Cypher"],["Punisher.","Chamber"]] }
-      },
-      [pairKey("Cypher","Deadlock")]: {
-        fr:{ q:"Tu préfères :", a:[["Surveiller.","Cypher"],["Bloquer.","Deadlock"]] },
-        en:{ q:"You prefer:", a:[["Watch.","Cypher"],["Block.","Deadlock"]] }
-      },
-      [pairKey("Sage","Chamber")]: {
-        fr:{ q:"Tu préfères :", a:[["Sauver l’équipe.","Sage"],["Prendre un pick propre.","Chamber"]] },
-        en:{ q:"You prefer:", a:[["Save the team.","Sage"],["Take a clean pick.","Chamber"]] }
-      },
-      [pairKey("Sage","Deadlock")]: {
-        fr:{ q:"Tu sécurises plutôt par :", a:[["Soutien.","Sage"],["Verrouillage.","Deadlock"]] },
-        en:{ q:"You secure more through:", a:[["Support.","Sage"],["Lockdown.","Deadlock"]] }
-      },
-      [pairKey("Chamber","Deadlock")]: {
-        fr:{ q:"Tu préfères :", a:[["Duel et précision.","Chamber"],["Stopper net.","Deadlock"]] },
-        en:{ q:"You prefer:", a:[["Duel and precision.","Chamber"],["Hard stop.","Deadlock"]] }
-      },
-    }
-  };
+  // === PLACEHOLDERS ===
+  // Remplace ces placeholders par les blocs complets (AGENT_Q_* et TIEBREAK_BY_ROLE)
+  // depuis ta version précédente (celle que tu utilises).
+  const AGENT_QUESTIONS_BY_ROLE = {};  // <-- À COLLER (duelist/initiator/controller/sentinel)
+  const TIEBREAK_BY_ROLE = {};         // <-- À COLLER (duelist/initiator/controller/sentinel)
+  // === /PLACEHOLDERS ===
 
   // -------------------------
   // UI refs
@@ -1670,7 +505,7 @@
   const phaseHint = $("phaseHint");
 
   const tbTitle = $("tbTitle");
-  const tbPair = $("tbPair");
+  const tbBadge = $("tbBadge");
   const tbText = $("tbText");
   const tbAnswers = $("tbAnswers");
 
@@ -1707,23 +542,19 @@
   // State
   // -------------------------
   let lang = "fr";
-
-  // phase: "role" | "agent"
-  let phase = "role";
-
+  let phase = "role"; // "role" | "agent"
   let idx = 0;
-  let history = []; // {phase, qIndex, awardedKey}
+  let history = [];
 
   let roleScores = initScoreMap(["duelist","initiator","controller","sentinel"]);
   let chosenRole = null;
 
-  let agentScores = {};      // map agent -> points
-  let chosenAgents = [];     // top 3
-  let pendingTie = null;     // { kind:"agent", roleKey, bracketList, winner, nextIndex }
+  let agentScores = {};
+  let chosenAgents = [];
+  let pendingTie = null; // {roleKey, bracketList, winner, nextIndex, pickStage}
+  let pickStage = 0;
+  let lockedWinners = [];
 
-  // -------------------------
-  // Language setup
-  // -------------------------
   function setLanguage(newLang){
     lang = newLang;
     document.documentElement.lang = lang;
@@ -1738,15 +569,15 @@
     title.textContent = LABELS[lang].introTitle;
     subtitle.textContent = LABELS[lang].introSub;
 
-    pill1.textContent = (lang==="fr") ? "10 + 10 questions" : "10 + 10 questions";
+    pill1.textContent = "10 + 10 questions";
     pill2.textContent = (lang==="fr") ? "Rôle → Agent" : "Role → Agent";
     pill3.textContent = (lang==="fr") ? "Départage si égalité" : "Tiebreak if tied";
-
     disclaimer.textContent = (lang==="fr")
       ? "Note : ce quiz donne une recommandation basée sur ton style. Mets à jour la liste d’agents si Riot en ajoute."
       : "Note: this quiz recommends based on your playstyle. Update the agent list if Riot adds new agents.";
 
     tbTitle.textContent = LABELS[lang].tiebreakTitle;
+    tbBadge.textContent = LABELS[lang].tiebreakBadge;
 
     pillMain.textContent = (lang==="fr") ? "Agent principal" : "Main agent";
     pillAlt.textContent  = (lang==="fr") ? "Alternatives" : "Alternatives";
@@ -1766,9 +597,6 @@
     if(resultCard.style.display !== "none") renderAgentScores();
   }
 
-  // -------------------------
-  // Navigation
-  // -------------------------
   function showOnly(which){
     introCard.style.display = (which==="intro") ? "" : "none";
     quizCard.style.display  = (which==="quiz") ? "" : "none";
@@ -1786,6 +614,8 @@
     agentScores = {};
     chosenAgents = [];
     pendingTie = null;
+    pickStage = 0;
+    lockedWinners = [];
 
     showOnly("quiz");
     renderQuestion();
@@ -1793,7 +623,7 @@
 
   function currentQuestionSet(){
     if(phase === "role") return ROLE_QUESTIONS;
-    return AGENT_QUESTIONS_BY_ROLE[chosenRole] || [];
+    return (AGENT_QUESTIONS_BY_ROLE[chosenRole] || []);
   }
 
   function renderQuestion(){
@@ -1801,19 +631,11 @@
     const q = qs[idx][lang];
 
     const total = qs.length;
-    const phaseLabel = (phase === "role") ? LABELS[lang].phaseRole : LABELS[lang].phaseAgent;
-    phaseHint.textContent = phaseLabel;
+    phaseHint.textContent = (phase === "role") ? LABELS[lang].phaseRole : LABELS[lang].phaseAgent;
 
-    // Progress text: show as "Phase 1: x/10" etc
-    if(phase === "role"){
-      progressEl.textContent = (lang==="fr")
-        ? `Rôle • Question ${idx+1} / ${total}`
-        : `Role • Question ${idx+1} / ${total}`;
-    } else {
-      progressEl.textContent = (lang==="fr")
-        ? `Agent (${chosenRole}) • Question ${idx+1} / ${total}`
-        : `Agent (${chosenRole}) • Question ${idx+1} / ${total}`;
-    }
+    progressEl.textContent = (phase === "role")
+      ? (lang==="fr" ? `Rôle • Question ${idx+1} / ${total}` : `Role • Question ${idx+1} / ${total}`)
+      : (lang==="fr" ? `Agent • Question ${idx+1} / ${total}` : `Agent • Question ${idx+1} / ${total}`);
 
     qText.textContent = q.q;
     answersEl.innerHTML = "";
@@ -1831,7 +653,6 @@
   }
 
   function chooseAnswer(awardKey){
-    // awardKey is roleKey in phase role, or agentName in phase agent
     history.push({ phase, qIndex: idx, awardedKey: awardKey });
 
     if(phase === "role"){
@@ -1841,12 +662,11 @@
       if(idx < ROLE_QUESTIONS.length){
         renderQuestion();
       } else {
-        // Fix role
         chosenRole = finalizeRole();
-        // Switch to agent phase
         phase = "agent";
         idx = 0;
         agentScores = initScoreMap(AGENTS_BY_ROLE[chosenRole]);
+
         showOnly("quiz");
         renderQuestion();
       }
@@ -1854,11 +674,10 @@
       agentScores[awardKey]++;
 
       idx++;
-      const qs = AGENT_QUESTIONS_BY_ROLE[chosenRole];
+      const qs = AGENT_QUESTIONS_BY_ROLE[chosenRole] || [];
       if(idx < qs.length){
         renderQuestion();
       } else {
-        // Resolve top-3 agents (with tiebreak if needed)
         resolveTop3AgentsWithTies();
       }
     }
@@ -1866,42 +685,28 @@
 
   function goBack(){
     if(idx<=0) return;
-
     idx--;
+
     const last = history.pop();
     if(!last) return;
 
-    // revert the score
     if(last.phase === "role"){
       roleScores[last.awardedKey] = clamp0(roleScores[last.awardedKey]-1);
       phase = "role";
-      chosenRole = null; // we are in role phase anyway
+      chosenRole = null;
     } else {
       agentScores[last.awardedKey] = clamp0(agentScores[last.awardedKey]-1);
       phase = "agent";
     }
-
     renderQuestion();
   }
 
   function finalizeRole(){
-    // If tie, you can plug a role-tiebreak here later.
-    // For now: take highest; if tie, take the first in sorted order.
     const ordered = Object.entries(roleScores)
       .map(([k,v])=>({k,v}))
       .sort((a,b)=> b.v - a.v || a.k.localeCompare(b.k));
     return ordered[0].k;
   }
-
-  // -------------------------
-  // Agent tie resolution (Top 3)
-  // Strategy:
-  // - We pick #1 then #2 then #3.
-  // - If tie for a pick, we ask tiebreak(s) (bracket) among tied agents.
-  // - After adding +1 to winner, we recalc and continue.
-  // -------------------------
-  let pickStage = 0; // 0->pick #1, 1->#2, 2->#3
-  let lockedWinners = []; // already picked
 
   function resolveTop3AgentsWithTies(){
     pickStage = 0;
@@ -1913,15 +718,13 @@
   function continuePicking(){
     if(pickStage >= 3){
       chosenAgents = lockedWinners.slice(0,3);
-      finalizeResults();
+      finalizeResultsUI();
       return;
     }
 
-    // Find best remaining
     const remaining = Object.keys(agentScores).filter(a => !lockedWinners.includes(a));
     if(remaining.length === 0){
-      // fallback
-      finalizeResults();
+      finalizeResultsUI();
       return;
     }
 
@@ -1936,14 +739,11 @@
       return;
     }
 
-    // Need tiebreak among tied for this pick
     startAgentTiebreak(tied);
   }
 
   function startAgentTiebreak(tiedAgents){
-    // bracket among tiedAgents: a0 vs a1 -> winner vs a2 -> ...
     pendingTie = {
-      kind: "agent",
       roleKey: chosenRole,
       bracketList: tiedAgents.slice(),
       winner: tiedAgents[0],
@@ -1955,21 +755,24 @@
   }
 
   function renderTiebreak(){
+    // ⚠️ Agents cachés : aucune mention de a/b dans l'UI.
+    // On ne montre qu'un badge neutre + la question.
+
     const roleKey = pendingTie.roleKey;
     const a = pendingTie.winner;
     const b = pendingTie.bracketList[pendingTie.nextIndex];
 
-    tbPair.textContent = `${a} vs ${b}`;
+    tbTitle.textContent = LABELS[lang].tiebreakTitle;
+    tbBadge.textContent = LABELS[lang].tiebreakBadge;
 
-    const bank = TIEBREAK_BY_ROLE[roleKey];
+    const bank = TIEBREAK_BY_ROLE[roleKey] || {};
     const key = pairKey(a,b);
-    const tb = bank && bank[key];
+    const tb = bank[key];
 
-    // Fallback (if missing)
     const question = tb ? tb[lang].q : (lang==="fr" ? "Question bonus :" : "Bonus question:");
     const answers = tb ? tb[lang].a : [
-      [`Option A (${a})`, a],
-      [`Option B (${b})`, b]
+      [(lang==="fr" ? "Option A" : "Option A"), a],
+      [(lang==="fr" ? "Option B" : "Option B"), b],
     ];
 
     tbText.textContent = question;
@@ -1986,10 +789,8 @@
   }
 
   function chooseTiebreak(chosenAgent){
-    // Break tie by +1
     agentScores[chosenAgent]++;
 
-    // Update bracket winner
     pendingTie.winner = chosenAgent;
     pendingTie.nextIndex++;
 
@@ -1998,38 +799,26 @@
       return;
     }
 
-    // Bracket done -> winner gets selected for this pick stage
     const winner = pendingTie.winner;
     pendingTie = null;
 
-    // lock winner and continue picking
     lockedWinners.push(winner);
     pickStage++;
-    showOnly("quiz"); // briefly show quiz? we go to results or next picking
+    showOnly("quiz");
     continuePicking();
   }
 
-  // -------------------------
-  // Final results
-  // -------------------------
-  function finalizeResults(){
-    // If we ended early, ensure we have 3 picks
-    const ordered = sortedKeys(agentScores).filter(a => !lockedWinners.includes(a));
-    while(lockedWinners.length < 3 && ordered.length){
-      lockedWinners.push(ordered.shift());
-    }
-    chosenAgents = lockedWinners.slice(0,3);
-    finalizeResultsUI();
-  }
-
   function finalizeResultsUI(){
+    const ordered = sortedKeys(agentScores).filter(a => !lockedWinners.includes(a));
+    while(lockedWinners.length < 3 && ordered.length) lockedWinners.push(ordered.shift());
+    chosenAgents = lockedWinners.slice(0,3);
+
     const [main, alt1, alt2] = chosenAgents;
 
     mainAgent.textContent = main || "—";
     alt1Agent.textContent = alt1 || "—";
     alt2Agent.textContent = alt2 || "—";
 
-    // Explain role + show it as main explanation
     const roleExplain = LABELS[lang].roleExplain[chosenRole] || "";
     mainExplain.textContent = (lang==="fr")
       ? `Rôle détecté : ${chosenRole.toUpperCase()} — ${roleExplain}`
@@ -2070,8 +859,8 @@
 
   async function copyResult(){
     const txt = (lang==="fr")
-      ? `Résultat Falka:\n- Rôle: ${chosenRole}\n- Agent: ${mainAgent.textContent}\n- Alternatives: ${alt1Agent.textContent}, ${alt2Agent.textContent}\n- Scores: ${Object.entries(agentScores).map(([k,v])=>`${k} ${v}`).join(", ")}`
-      : `Falka result:\n- Role: ${chosenRole}\n- Agent: ${mainAgent.textContent}\n- Alternatives: ${alt1Agent.textContent}, ${alt2Agent.textContent}\n- Scores: ${Object.entries(agentScores).map(([k,v])=>`${k} ${v}`).join(", ")}`;
+      ? `Résultat Falka:\n- Rôle: ${chosenRole}\n- Agent: ${mainAgent.textContent}\n- Alternatives: ${alt1Agent.textContent}, ${alt2Agent.textContent}`
+      : `Falka result:\n- Role: ${chosenRole}\n- Agent: ${mainAgent.textContent}\n- Alternatives: ${alt1Agent.textContent}, ${alt2Agent.textContent}`;
 
     try{
       await navigator.clipboard.writeText(txt);
@@ -2082,9 +871,7 @@
     }
   }
 
-  // -------------------------
   // Events
-  // -------------------------
   langSel.addEventListener("change", (e) => setLanguage(e.target.value));
   startBtn.addEventListener("click", start);
   restartBtn.addEventListener("click", () => showOnly("intro"));
@@ -2094,7 +881,6 @@
 
   // Init
   setLanguage(langSel.value);
-
 })();
 </script>
 </body>
