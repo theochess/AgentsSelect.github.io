@@ -165,7 +165,7 @@
     .socialLink a{ color: var(--f-cream); text-decoration:none; font-weight:800; }
     .socialLink a:hover{ text-decoration:underline; }
 
-    /* ✅ AJOUT : icônes Twitch / TikTok (à la place du point rouge) */
+    /* Icônes Twitch / TikTok */
     .socialIcon{
       width:22px;
       height:22px;
@@ -233,6 +233,25 @@
       </div>
     </div>
 
+    <!-- ✅ AJOUT (sans changer le design) : écran de résultat du rôle + bouton Continuer -->
+    <div class="card" id="roleCard" style="display:none;">
+      <div class="row">
+        <span class="pill red" id="rolePill">Votre rôle est</span>
+        <span class="pill" id="rolePill2">Étape 1 / 2</span>
+      </div>
+
+      <div class="resultBig" id="roleName">—</div>
+      <p class="muted" id="roleExplain" style="margin-top:0;">—</p>
+
+      <div class="footerBtns">
+        <button class="primary" id="continueBtn">Continuer</button>
+      </div>
+
+      <p class="muted" id="roleHint" style="margin-top:10px; font-size:13px;">
+        (Clique sur Continuer pour répondre aux 10 questions d’agent.)
+      </p>
+    </div>
+
     <div class="card" id="tiebreakCard" style="display:none;">
       <div class="row" style="justify-content:space-between; align-items:center;">
         <div class="muted" id="tbTitle">Question bonus</div>
@@ -288,7 +307,6 @@
       <div class="socialList">
         <div class="socialItem">
           <div class="socialLeft">
-            <!-- ✅ MODIF : logo Twitch -->
             <img src="ttv_rouge.png" class="socialIcon" alt="Twitch">
             <span class="socialName">Twitch</span>
           </div>
@@ -296,7 +314,6 @@
         </div>
         <div class="socialItem">
           <div class="socialLeft">
-            <!-- ✅ MODIF : logo TikTok -->
             <img src="tiktok_logo_rouge.png" class="socialIcon" alt="TikTok">
             <span class="socialName">TikTok</span>
           </div>
@@ -323,7 +340,6 @@
     .sort((a,b)=> b.v - a.v || a.k.localeCompare(b.k))
     .map(e => e.k);
 
-  // Shuffle (Fisher–Yates)
   function shuffleArray(arr){
     const a = arr.slice();
     for(let i=a.length-1;i>0;i--){
@@ -354,7 +370,11 @@
         initiator:"Profil Initiator : info + facilitation d’entrée.",
         controller:"Profil Controller : contrôle des lignes de vue et du tempo.",
         sentinel:"Profil Sentinel : sécurité, tenue et anti-flank."
-      }
+      },
+      roleCardPill:"Votre rôle est",
+      roleCardStep:"Étape 1 / 2",
+      roleCardBtn:"Continuer",
+      roleCardHint:"(Clique sur Continuer pour répondre aux 10 questions d’agent.)"
     },
     en: {
       language:"Language", restart:"Restart", start:"Start", back:"Back",
@@ -373,152 +393,157 @@
         initiator:"Initiator profile: info + enabling entries.",
         controller:"Controller profile: sightline and tempo control.",
         sentinel:"Sentinel profile: security, holding, anti-flank."
-      }
+      },
+      roleCardPill:"Your role is",
+      roleCardStep:"Step 1 / 2",
+      roleCardBtn:"Continue",
+      roleCardHint:"(Click Continue to answer the 10 agent questions.)"
     }
   };
 
   // -------------------------
   // Phase 1 - ROLE questions
+  // (INCHANGÉES : tu m'as demandé de ne rien modifier)
   // -------------------------
   const ROLE_QUESTIONS = [
     {
-      fr:{ q:"Ton style naturel en début de round ?", a:[
-        ["J’entre en premier, je prends les duels.","duelist"],
-        ["Je prépare l’entrée avec mes utilitaires.","initiator"],
-        ["Je contrôle la map avec des smokes.","controller"],
-        ["Je sécurise les arrières et je protège.","sentinel"],
+      fr:{ q:"Au début du round je veux :", a:[
+        ["Tout faire pour que mon équipe reste en vie.","sentinel"],
+        ["Analyser les adversaires pour frapper là où ça fait mal.","initiator"],
+        ["Vite me fight et essayer de récupérer des kills.","duelist"],
+        ["Restreindre au maximum les adversaires.","controller"],
       ]},
-      en:{ q:"Your natural style at round start?", a:[
-        ["I entry first and take duels.","duelist"],
-        ["I prepare the entry with utility.","initiator"],
-        ["I control space with smokes.","controller"],
-        ["I lock down and protect flanks.","sentinel"],
+      en:{ q:"At the start of the round I want to:", a:[
+        ["Keep my team alive at all costs.","sentinel"],
+        ["Analyze enemies and strike weaknesses.","initiator"],
+        ["Fight quickly and get kills.","duelist"],
+        ["Restrict enemies as much as possible.","controller"],
       ]}
     },
     {
       fr:{ q:"Quelle est ta plus grande force ?", a:[
         ["Mon aim.","duelist"],
-        ["Ma communication / création d’ouverture.","initiator"],
-        ["Ma vision stratégique.","controller"],
-        ["Mon intelligence de jeu (timings, holds).","sentinel"],
+        ["Mon gamesens.","controller"],
+        ["Ma communication.","initiator"],
+        ["Mon adaptation aux autres.","sentinel"],
       ]},
-      en:{ q:"What’s your biggest strength?", a:[
+      en:{ q:"What is your biggest strength?", a:[
         ["My aim.","duelist"],
-        ["My comms / enabling openings.","initiator"],
-        ["My strategic vision.","controller"],
-        ["My game sense (timings, holds).","sentinel"],
+        ["My game sense.","controller"],
+        ["My communication.","initiator"],
+        ["My adaptability.","sentinel"],
       ]}
     },
     {
-      fr:{ q:"Tu préfères gagner grâce à :", a:[
-        ["Des frags décisifs.","duelist"],
-        ["Des ouvertures créées par l’info/flash.","initiator"],
-        ["Le contrôle du tempo et des lignes de vue.","controller"],
-        ["Des erreurs adverses punies et une défense solide.","sentinel"],
+      fr:{ q:"Dans un round tu préfères :", a:[
+        ["Ne pas mourir.","controller"],
+        ["Faire 1 kill.","duelist"],
+        ["Faire 2 assists.","initiator"],
+        ["Qu’aucun de tes mates ne meure.","sentinel"],
       ]},
-      en:{ q:"You prefer winning through:", a:[
-        ["Decisive kills.","duelist"],
-        ["Openings via info/flash.","initiator"],
-        ["Tempo and sightline control.","controller"],
-        ["Punishing mistakes with solid defense.","sentinel"],
+      en:{ q:"In a round you prefer to:", a:[
+        ["Stay alive.","controller"],
+        ["Get 1 kill.","duelist"],
+        ["Get 2 assists.","initiator"],
+        ["Make sure no teammate dies.","sentinel"],
       ]}
     },
     {
-      fr:{ q:"En situation 1vX tu :", a:[
-        ["Cherches le duel rapide.","duelist"],
-        ["Isoles avec tes capacités (flash/reveal).","initiator"],
-        ["Joues le timing et la map (smokes).","controller"],
-        ["Forces les adversaires à venir dans ton setup.","sentinel"],
+      fr:{ q:"En situation de clutch 1v3, la première chose que tu fais :", a:[
+        ["Tu économises ton arme.","sentinel"],
+        ["Tu récupères des infos avec tes compétences.","initiator"],
+        ["Tu fais tomber le plus d’armes possible.","controller"],
+        ["Tu cherches le duel rapidement.","duelist"],
       ]},
-      en:{ q:"In a 1vX you:", a:[
-        ["Take fast duels.","duelist"],
-        ["Isolate with utility (flash/reveal).","initiator"],
-        ["Play timing and map control (smokes).","controller"],
-        ["Force enemies into your setup.","sentinel"],
+      en:{ q:"In a 1v3 clutch, the first thing you do:", a:[
+        ["Save your weapon.","sentinel"],
+        ["Gather info with abilities.","initiator"],
+        ["Try to drop as many weapons as possible.","controller"],
+        ["Look for a quick duel.","duelist"],
       ]}
     },
     {
-      fr:{ q:"Ton niveau d’agressivité est plutôt :", a:[
-        ["Très agressif.","duelist"],
-        ["Agressif mais préparé.","initiator"],
-        ["Calme, je dicte le tempo.","controller"],
+      fr:{ q:"Ton niveau d’impatience :", a:[
+        ["Je veux vite faire la différence.","duelist"],
+        ["Je me fight quand tout le monde est prêt.","controller"],
+        ["Calme, j’y vais quand les autres veulent.","initiator"],
         ["Patient, j’attends l’erreur.","sentinel"],
       ]},
-      en:{ q:"Your aggression level is:", a:[
-        ["Very aggressive.","duelist"],
-        ["Aggressive but prepared.","initiator"],
-        ["Calm, I dictate tempo.","controller"],
+      en:{ q:"Your level of impatience:", a:[
+        ["I want to make the difference fast.","duelist"],
+        ["I fight when everyone is ready.","controller"],
+        ["Calm, I go when others go.","initiator"],
         ["Patient, I wait for mistakes.","sentinel"],
       ]}
     },
     {
-      fr:{ q:"Ton rôle préféré dans l’équipe ?", a:[
-        ["Carry / fragger.","duelist"],
-        ["Facilitateur (entrée, info).","initiator"],
-        ["Chef d’orchestre (smokes, rotations).","controller"],
-        ["Pilier défensif (holds, anti-flank).","sentinel"],
+      fr:{ q:"Le plus important pour toi :", a:[
+        ["Être le meilleur joueur de l’équipe.","duelist"],
+        ["Rendre mes mates excellents.","initiator"],
+        ["Pousser les adversaires à l’erreur.","controller"],
+        ["Rendre les adversaires moins forts.","sentinel"],
       ]},
-      en:{ q:"Your preferred team role?", a:[
-        ["Carry / fragger.","duelist"],
-        ["Facilitator (entry, info).","initiator"],
-        ["Orchestrator (smokes, rotations).","controller"],
-        ["Defensive anchor (holds, anti-flank).","sentinel"],
+      en:{ q:"What matters most to you:", a:[
+        ["Being the best player on the team.","duelist"],
+        ["Making my teammates excellent.","initiator"],
+        ["Forcing enemies into mistakes.","controller"],
+        ["Making enemies weaker.","sentinel"],
       ]}
     },
     {
       fr:{ q:"Tu te sens le plus fort :", a:[
-        ["En prise de space (entry).","duelist"],
-        ["En prise d’info et préparation.","initiator"],
-        ["En contrôle de site et découpes.","controller"],
-        ["En défense / tenue.","sentinel"],
+        ["En prise d’espace (entry).","duelist"],
+        ["En prise d’info.","initiator"],
+        ["Pour restreindre les adversaires.","controller"],
+        ["Pour tenir une ligne.","sentinel"],
       ]},
       en:{ q:"You feel strongest:", a:[
         ["Taking space (entry).","duelist"],
-        ["Gathering info and setting up.","initiator"],
-        ["Site control and slicing angles.","controller"],
-        ["On defense / holding.","sentinel"],
+        ["Gathering information.","initiator"],
+        ["Restricting enemies.","controller"],
+        ["Holding a line.","sentinel"],
       ]}
     },
     {
       fr:{ q:"Quelles capacités t’attirent le plus ?", a:[
-        ["Mobilité / dash.","duelist"],
-        ["Flash / reveal / drone.","initiator"],
-        ["Smokes / walls / vision denial.","controller"],
-        ["Pièges / ralentissements / gadgets.","sentinel"],
+        ["Informations (Reveal, Flash).","initiator"],
+        ["Mobilité (Dash / reposition).","duelist"],
+        ["Atouts (ralentissements / heal).","sentinel"],
+        ["Smokes & walls.","controller"],
       ]},
       en:{ q:"Which abilities attract you most?", a:[
-        ["Mobility / dash.","duelist"],
-        ["Flash / reveal / drone.","initiator"],
-        ["Smokes / walls / vision denial.","controller"],
-        ["Traps / slows / gadgets.","sentinel"],
+        ["Information (Reveal, Flash).","initiator"],
+        ["Mobility (Dash / reposition).","duelist"],
+        ["Utility (slows / heal).","sentinel"],
+        ["Smokes & walls.","controller"],
       ]}
     },
     {
-      fr:{ q:"Ton niveau mécanique (mécaniques pures) ?", a:[
+      fr:{ q:"Ton niveau mécanique ?", a:[
         ["Très élevé, je veux en profiter.","duelist"],
-        ["Bon, mais je préfère aider l’entrée.","initiator"],
-        ["Moyen : je gagne via utilité.","controller"],
+        ["Bon, mais perfectible.","initiator"],
+        ["Moyen : je gagne grâce à l’équipe.","controller"],
         ["Variable : je mise sur le placement.","sentinel"],
       ]},
-      en:{ q:"Your raw mechanics level?", a:[
-        ["Very high, I want to leverage it.","duelist"],
-        ["Good, but I prefer enabling entry.","initiator"],
-        ["Average: I win through utility.","controller"],
+      en:{ q:"Your mechanical level?", a:[
+        ["Very high, I want to use it.","duelist"],
+        ["Good but improvable.","initiator"],
+        ["Average: I win thanks to teamplay.","controller"],
         ["Situational: I rely on positioning.","sentinel"],
       ]}
     },
     {
       fr:{ q:"Tu veux être :", a:[
-        ["Le joueur flashy.","duelist"],
-        ["Celui qui déclenche l’action.","initiator"],
-        ["Le cerveau du round.","controller"],
-        ["Le pilier solide.","sentinel"],
+        ["Le joueur décisif.","duelist"],
+        ["Le facilitateur.","initiator"],
+        ["Le meneur de jeu.","controller"],
+        ["Le joueur intuable.","sentinel"],
       ]},
       en:{ q:"You want to be:", a:[
-        ["The flashy player.","duelist"],
-        ["The play starter.","initiator"],
-        ["The brain of the round.","controller"],
-        ["The solid anchor.","sentinel"],
+        ["The decisive player.","duelist"],
+        ["The enabler.","initiator"],
+        ["The playmaker / leader.","controller"],
+        ["The unkillable one.","sentinel"],
       ]}
     }
   ];
@@ -834,6 +859,7 @@
   // -------------------------
   const introCard = $("introCard");
   const quizCard = $("quizCard");
+  const roleCard = $("roleCard");
   const tiebreakCard = $("tiebreakCard");
   const resultCard = $("resultCard");
 
@@ -846,6 +872,13 @@
   const answersEl = $("answers");
   const progressEl = $("progress");
   const phaseHint = $("phaseHint");
+
+  const rolePill = $("rolePill");
+  const rolePill2 = $("rolePill2");
+  const roleName = $("roleName");
+  const roleExplainEl = $("roleExplain");
+  const roleHint = $("roleHint");
+  const continueBtn = $("continueBtn");
 
   const tbTitle = $("tbTitle");
   const tbBadge = $("tbBadge");
@@ -895,17 +928,13 @@
   let agentScores = {};
   let chosenAgents = [];
 
-  // random order state
   let roleOrder = [];
   let agentOrder = [];
-  let renderedAnswers = {}; // key: "phase:idx" -> shuffled answers array
+  let renderedAnswers = {};
 
-  // tie state for:
-  // - role selection (after 10 role questions)
-  // - top3 agent picks (after 10 agent questions)
-  let pickStage = 0;        // 0->pick #1, 1->#2, 2->#3
-  let lockedWinners = [];   // already selected agents
-  let pendingTie = null;    // { type, candidates, nextRound, currentPool }
+  let pickStage = 0;
+  let lockedWinners = [];
+  let pendingTie = null;
 
   // -------------------------
   // Language setup
@@ -949,7 +978,17 @@
     footerTitle.textContent = LABELS[lang].socialsTitle;
     footerSubtitle.textContent = LABELS[lang].socialsSub;
 
+    // Textes écran rôle
+    rolePill.textContent = LABELS[lang].roleCardPill;
+    rolePill2.textContent = LABELS[lang].roleCardStep;
+    continueBtn.textContent = LABELS[lang].roleCardBtn;
+    roleHint.textContent = LABELS[lang].roleCardHint;
+
     if(quizCard.style.display !== "none") renderQuestion();
+
+    if(roleCard.style.display !== "none"){
+      renderRoleCard();
+    }
 
     if(tiebreakCard.style.display !== "none" && pendingTie){
       if(!pendingTie.currentPool || pendingTie.currentPool.length === 0){
@@ -968,6 +1007,7 @@
   function showOnly(which){
     introCard.style.display = (which==="intro") ? "" : "none";
     quizCard.style.display  = (which==="quiz") ? "" : "none";
+    roleCard.style.display  = (which==="role") ? "" : "none";
     tiebreakCard.style.display = (which==="tiebreak") ? "" : "none";
     resultCard.style.display = (which==="result") ? "" : "none";
   }
@@ -986,7 +1026,6 @@
     lockedWinners = [];
     pendingTie = null;
 
-    // randomize question order each run
     roleOrder = shuffleArray([...Array(ROLE_QUESTIONS.length).keys()]);
     agentOrder = [];
     renderedAnswers = {};
@@ -1042,7 +1081,6 @@
     qText.textContent = q.q;
     answersEl.innerHTML = "";
 
-    // shuffle answers per question, but keep stable when going back
     const stableKey = `${phase}:${idx}`;
     let answers = q.a;
 
@@ -1075,14 +1113,14 @@
       if(idx < ROLE_QUESTIONS.length){
         renderQuestion();
       } else {
-        // ---- ROLE decision with tiebreak if needed ----
         const entries = Object.entries(roleScores).map(([k,v])=>({k,v}));
         const max = Math.max(...entries.map(e => e.v));
         const tied = entries.filter(e => e.v === max).map(e => e.k);
 
         if(tied.length === 1){
           chosenRole = tied[0];
-          startAgentPhase();
+          // ✅ AU LIEU de passer direct aux agents -> on affiche la carte rôle
+          showRoleResult();
         } else {
           startTiebreak("role", tied);
         }
@@ -1119,6 +1157,23 @@
     renderQuestion();
   }
 
+  // ✅ NOUVEAU : écran role avant phase agent
+  function renderRoleCard(){
+    if(!chosenRole){
+      roleName.textContent = "—";
+      roleExplainEl.textContent = "—";
+      return;
+    }
+    roleName.textContent = chosenRole.toUpperCase();
+    const explain = LABELS[lang].roleExplain?.[chosenRole] || "";
+    roleExplainEl.textContent = explain || "—";
+  }
+
+  function showRoleResult(){
+    renderRoleCard();
+    showOnly("role");
+  }
+
   function startAgentPhase(){
     phase = "agent";
     idx = 0;
@@ -1127,7 +1182,7 @@
 
     const agentQs = Q_AGENT[chosenRole] || [];
     agentOrder = shuffleArray([...Array(agentQs.length).keys()]);
-    renderedAnswers = {}; // reset answer shuffle cache for agent phase
+    renderedAnswers = {};
 
     showOnly("quiz");
     renderQuestion();
@@ -1167,7 +1222,6 @@
       return;
     }
 
-    // tie => optimized pools tiebreak (agents)
     startTiebreak("agent", tied);
   }
 
@@ -1176,9 +1230,9 @@
   // -------------------------
   function startTiebreak(type, tiedKeys){
     pendingTie = {
-      type, // "role" | "agent"
+      type,
       traits: (type === "role") ? ROLE_TRAITS : AGENT_TRAITS,
-      candidates: shuffleArray(tiedKeys.slice()), // shuffle to avoid patterns
+      candidates: shuffleArray(tiedKeys.slice()),
       nextRound: [],
       currentPool: []
     };
@@ -1189,7 +1243,6 @@
   function prepareNextPool(){
     if(!pendingTie) return;
 
-    // End of a round of pools => if one winner remains, we’re done
     if(pendingTie.candidates.length === 0){
       if(pendingTie.nextRound.length === 1){
         const winner = pendingTie.nextRound[0];
@@ -1198,11 +1251,11 @@
 
         if(type === "role"){
           chosenRole = winner;
-          startAgentPhase();
+          // ✅ AU LIEU de passer direct aux agents -> on affiche la carte rôle
+          showRoleResult();
           return;
         }
 
-        // agent
         lockedWinners.push(winner);
         pickStage++;
         showOnly("quiz");
@@ -1210,15 +1263,12 @@
         return;
       }
 
-      // New round with pool winners
       pendingTie.candidates = shuffleArray(pendingTie.nextRound.slice());
       pendingTie.nextRound = [];
     }
 
-    // Take next pool of 2 to 4
     pendingTie.currentPool = pendingTie.candidates.splice(0, 4);
 
-    // Safety: if we somehow got 1 candidate, auto-advance
     if(pendingTie.currentPool.length === 1){
       pendingTie.nextRound.push(pendingTie.currentPool[0]);
       pendingTie.currentPool = [];
@@ -1240,7 +1290,6 @@
 
     tbAnswers.innerHTML = "";
 
-    // Shuffle display order of options too (anti-pattern)
     const pool = shuffleArray(pendingTie.currentPool);
 
     pool.forEach(key => {
@@ -1263,18 +1312,15 @@
   }
 
   function chooseTiebreakWinner(winner){
-    // Break tie by giving +1 to chosen (still hidden)
     if(pendingTie.type === "role"){
       roleScores[winner] = (roleScores[winner] || 0) + 1;
     } else {
       agentScores[winner] = (agentScores[winner] || 0) + 1;
     }
 
-    // Winner advances to next round
     pendingTie.nextRound.push(winner);
     pendingTie.currentPool = [];
 
-    // Next pool / round
     prepareNextPool();
   }
 
@@ -1302,7 +1348,7 @@
       : `Coherent alternative within ${chosenRole.toUpperCase()} (2nd best score).`;
 
     alt2Why.textContent = (lang==="fr")
-      ? `Alternative cohérente dans ${chosenRole.toUpperCase()} (3e meilleur score).`
+      ? `Alternative cohérente dans ${chosenRole.toUpperCase()} (3rd best score).`
       : `Coherent alternative within ${chosenRole.toUpperCase()} (3rd best score).`;
 
     renderAgentScores();
@@ -1349,12 +1395,20 @@
   // -------------------------
   langSel.addEventListener("change", (e) => setLanguage(e.target.value));
   startBtn.addEventListener("click", start);
+
+  // Restart = reset total (comme relancer le site)
   restartBtn.addEventListener("click", () => {
     location.reload();
   });
+
   backBtn.addEventListener("click", goBack);
   retryBtn.addEventListener("click", start);
   copyBtn.addEventListener("click", copyResult);
+
+  // ✅ NOUVEAU : Continuer -> lance la phase agent
+  continueBtn.addEventListener("click", () => {
+    startAgentPhase();
+  });
 
   // Init
   setLanguage(langSel.value);
