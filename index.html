@@ -164,6 +164,14 @@
     .socialName{ font-weight:800; }
     .socialLink a{ color: var(--f-cream); text-decoration:none; font-weight:800; }
     .socialLink a:hover{ text-decoration:underline; }
+
+    /* ✅ AJOUT : icônes Twitch / TikTok (à la place du point rouge) */
+    .socialIcon{
+      width:22px;
+      height:22px;
+      object-fit:contain;
+      filter: drop-shadow(0 0 4px rgba(229,57,59,0.4));
+    }
   </style>
 </head>
 
@@ -279,11 +287,19 @@
 
       <div class="socialList">
         <div class="socialItem">
-          <div class="socialLeft"><span class="badge"></span><span class="socialName">Twitch</span></div>
+          <div class="socialLeft">
+            <!-- ✅ MODIF : logo Twitch -->
+            <img src="ttv_rouge.png" class="socialIcon" alt="Twitch">
+            <span class="socialName">Twitch</span>
+          </div>
           <div class="socialLink"><a href="https://www.twitch.tv/falkalive" target="_blank" rel="noopener">FalkaLive</a></div>
         </div>
         <div class="socialItem">
-          <div class="socialLeft"><span class="badge"></span><span class="socialName">TikTok</span></div>
+          <div class="socialLeft">
+            <!-- ✅ MODIF : logo TikTok -->
+            <img src="tiktok_logo_rouge.png" class="socialIcon" alt="TikTok">
+            <span class="socialName">TikTok</span>
+          </div>
           <div class="socialLink"><a href="https://www.tiktok.com/@falkalive" target="_blank" rel="noopener">Falka TikTok</a></div>
         </div>
       </div>
@@ -365,156 +381,148 @@
   // Phase 1 - ROLE questions
   // -------------------------
   const ROLE_QUESTIONS = [
-  {
-    fr:{ q:"Au début du round je veux :", a:[
-      ["Tout faire pour que mon équipe reste en vie.","sentinel"],
-      ["Analyser les adversaires pour frapper là où ça fait mal.","initiator"],
-      ["Vite me fight et essayer de récupérer des kills.","duelist"],
-      ["Restreindre au maximum les adversaires.","controller"],
-    ]},
-    en:{ q:"At the start of the round I want to:", a:[
-      ["Keep my team alive at all costs.","sentinel"],
-      ["Analyze enemies and strike weaknesses.","initiator"],
-      ["Fight quickly and get kills.","duelist"],
-      ["Restrict enemies as much as possible.","controller"],
-    ]}
-  },
+    {
+      fr:{ q:"Ton style naturel en début de round ?", a:[
+        ["J’entre en premier, je prends les duels.","duelist"],
+        ["Je prépare l’entrée avec mes utilitaires.","initiator"],
+        ["Je contrôle la map avec des smokes.","controller"],
+        ["Je sécurise les arrières et je protège.","sentinel"],
+      ]},
+      en:{ q:"Your natural style at round start?", a:[
+        ["I entry first and take duels.","duelist"],
+        ["I prepare the entry with utility.","initiator"],
+        ["I control space with smokes.","controller"],
+        ["I lock down and protect flanks.","sentinel"],
+      ]}
+    },
+    {
+      fr:{ q:"Quelle est ta plus grande force ?", a:[
+        ["Mon aim.","duelist"],
+        ["Ma communication / création d’ouverture.","initiator"],
+        ["Ma vision stratégique.","controller"],
+        ["Mon intelligence de jeu (timings, holds).","sentinel"],
+      ]},
+      en:{ q:"What’s your biggest strength?", a:[
+        ["My aim.","duelist"],
+        ["My comms / enabling openings.","initiator"],
+        ["My strategic vision.","controller"],
+        ["My game sense (timings, holds).","sentinel"],
+      ]}
+    },
+    {
+      fr:{ q:"Tu préfères gagner grâce à :", a:[
+        ["Des frags décisifs.","duelist"],
+        ["Des ouvertures créées par l’info/flash.","initiator"],
+        ["Le contrôle du tempo et des lignes de vue.","controller"],
+        ["Des erreurs adverses punies et une défense solide.","sentinel"],
+      ]},
+      en:{ q:"You prefer winning through:", a:[
+        ["Decisive kills.","duelist"],
+        ["Openings via info/flash.","initiator"],
+        ["Tempo and sightline control.","controller"],
+        ["Punishing mistakes with solid defense.","sentinel"],
+      ]}
+    },
+    {
+      fr:{ q:"En situation 1vX tu :", a:[
+        ["Cherches le duel rapide.","duelist"],
+        ["Isoles avec tes capacités (flash/reveal).","initiator"],
+        ["Joues le timing et la map (smokes).","controller"],
+        ["Forces les adversaires à venir dans ton setup.","sentinel"],
+      ]},
+      en:{ q:"In a 1vX you:", a:[
+        ["Take fast duels.","duelist"],
+        ["Isolate with utility (flash/reveal).","initiator"],
+        ["Play timing and map control (smokes).","controller"],
+        ["Force enemies into your setup.","sentinel"],
+      ]}
+    },
+    {
+      fr:{ q:"Ton niveau d’agressivité est plutôt :", a:[
+        ["Très agressif.","duelist"],
+        ["Agressif mais préparé.","initiator"],
+        ["Calme, je dicte le tempo.","controller"],
+        ["Patient, j’attends l’erreur.","sentinel"],
+      ]},
+      en:{ q:"Your aggression level is:", a:[
+        ["Very aggressive.","duelist"],
+        ["Aggressive but prepared.","initiator"],
+        ["Calm, I dictate tempo.","controller"],
+        ["Patient, I wait for mistakes.","sentinel"],
+      ]}
+    },
+    {
+      fr:{ q:"Ton rôle préféré dans l’équipe ?", a:[
+        ["Carry / fragger.","duelist"],
+        ["Facilitateur (entrée, info).","initiator"],
+        ["Chef d’orchestre (smokes, rotations).","controller"],
+        ["Pilier défensif (holds, anti-flank).","sentinel"],
+      ]},
+      en:{ q:"Your preferred team role?", a:[
+        ["Carry / fragger.","duelist"],
+        ["Facilitator (entry, info).","initiator"],
+        ["Orchestrator (smokes, rotations).","controller"],
+        ["Defensive anchor (holds, anti-flank).","sentinel"],
+      ]}
+    },
+    {
+      fr:{ q:"Tu te sens le plus fort :", a:[
+        ["En prise de space (entry).","duelist"],
+        ["En prise d’info et préparation.","initiator"],
+        ["En contrôle de site et découpes.","controller"],
+        ["En défense / tenue.","sentinel"],
+      ]},
+      en:{ q:"You feel strongest:", a:[
+        ["Taking space (entry).","duelist"],
+        ["Gathering info and setting up.","initiator"],
+        ["Site control and slicing angles.","controller"],
+        ["On defense / holding.","sentinel"],
+      ]}
+    },
+    {
+      fr:{ q:"Quelles capacités t’attirent le plus ?", a:[
+        ["Mobilité / dash.","duelist"],
+        ["Flash / reveal / drone.","initiator"],
+        ["Smokes / walls / vision denial.","controller"],
+        ["Pièges / ralentissements / gadgets.","sentinel"],
+      ]},
+      en:{ q:"Which abilities attract you most?", a:[
+        ["Mobility / dash.","duelist"],
+        ["Flash / reveal / drone.","initiator"],
+        ["Smokes / walls / vision denial.","controller"],
+        ["Traps / slows / gadgets.","sentinel"],
+      ]}
+    },
+    {
+      fr:{ q:"Ton niveau mécanique (mécaniques pures) ?", a:[
+        ["Très élevé, je veux en profiter.","duelist"],
+        ["Bon, mais je préfère aider l’entrée.","initiator"],
+        ["Moyen : je gagne via utilité.","controller"],
+        ["Variable : je mise sur le placement.","sentinel"],
+      ]},
+      en:{ q:"Your raw mechanics level?", a:[
+        ["Very high, I want to leverage it.","duelist"],
+        ["Good, but I prefer enabling entry.","initiator"],
+        ["Average: I win through utility.","controller"],
+        ["Situational: I rely on positioning.","sentinel"],
+      ]}
+    },
+    {
+      fr:{ q:"Tu veux être :", a:[
+        ["Le joueur flashy.","duelist"],
+        ["Celui qui déclenche l’action.","initiator"],
+        ["Le cerveau du round.","controller"],
+        ["Le pilier solide.","sentinel"],
+      ]},
+      en:{ q:"You want to be:", a:[
+        ["The flashy player.","duelist"],
+        ["The play starter.","initiator"],
+        ["The brain of the round.","controller"],
+        ["The solid anchor.","sentinel"],
+      ]}
+    }
+  ];
 
-  {
-    fr:{ q:"Quelle est ta plus grande force ?", a:[
-      ["Mon aim.","duelist"],
-      ["Mon gamesens.","controller"],
-      ["Ma communication.","initiator"],
-      ["Mon adaptation aux autres.","sentinel"],
-    ]},
-    en:{ q:"What is your biggest strength?", a:[
-      ["My aim.","duelist"],
-      ["My game sense.","controller"],
-      ["My communication.","initiator"],
-      ["My adaptability.","sentinel"],
-    ]}
-  },
-
-  {
-    fr:{ q:"Dans un round tu préfères :", a:[
-      ["Ne pas mourir.","controller"],
-      ["Faire 1 kill.","duelist"],
-      ["Faire 2 assists.","initiator"],
-      ["Qu’aucun de tes mates ne meure.","sentinel"],
-    ]},
-    en:{ q:"In a round you prefer to:", a:[
-      ["Stay alive.","controller"],
-      ["Get 1 kill.","duelist"],
-      ["Get 2 assists.","initiator"],
-      ["Make sure no teammate dies.","sentinel"],
-    ]}
-  },
-
-  {
-    fr:{ q:"En situation de clutch 1v3, la première chose que tu fais :", a:[
-      ["Tu économises ton arme.","sentinel"],
-      ["Tu récupères des infos avec tes compétences.","initiator"],
-      ["Tu fais tomber le plus d’armes possible.","controller"],
-      ["Tu cherches le duel rapidement.","duelist"],
-    ]},
-    en:{ q:"In a 1v3 clutch, the first thing you do:", a:[
-      ["Save your weapon.","sentinel"],
-      ["Gather info with abilities.","initiator"],
-      ["Try to drop as many weapons as possible.","controller"],
-      ["Look for a quick duel.","duelist"],
-    ]}
-  },
-
-  {
-    fr:{ q:"Ton niveau d’impatience :", a:[
-      ["Je veux vite faire la différence.","duelist"],
-      ["Je me fight quand tout le monde est prêt.","controller"],
-      ["Calme, j’y vais quand les autres veulent.","initiator"],
-      ["Patient, j’attends l’erreur.","sentinel"],
-    ]},
-    en:{ q:"Your level of impatience:", a:[
-      ["I want to make the difference fast.","duelist"],
-      ["I fight when everyone is ready.","controller"],
-      ["Calm, I go when others go.","initiator"],
-      ["Patient, I wait for mistakes.","sentinel"],
-    ]}
-  },
-
-  {
-    fr:{ q:"Le plus important pour toi :", a:[
-      ["Être le meilleur joueur de l’équipe.","duelist"],
-      ["Rendre mes mates excellents.","initiator"],
-      ["Pousser les adversaires à l’erreur.","controller"],
-      ["Rendre les adversaires moins forts.","sentinel"],
-    ]},
-    en:{ q:"What matters most to you:", a:[
-      ["Being the best player on the team.","duelist"],
-      ["Making my teammates excellent.","initiator"],
-      ["Forcing enemies into mistakes.","controller"],
-      ["Making enemies weaker.","sentinel"],
-    ]}
-  },
-
-  {
-    fr:{ q:"Tu te sens le plus fort :", a:[
-      ["En prise d’espace (entry).","duelist"],
-      ["En prise d’info.","initiator"],
-      ["Pour restreindre les adversaires.","controller"],
-      ["Pour tenir une ligne.","sentinel"],
-    ]},
-    en:{ q:"You feel strongest:", a:[
-      ["Taking space (entry).","duelist"],
-      ["Gathering information.","initiator"],
-      ["Restricting enemies.","controller"],
-      ["Holding a line.","sentinel"],
-    ]}
-  },
-
-  {
-    fr:{ q:"Quelles capacités t’attirent le plus ?", a:[
-      ["Informations (Reveal, Flash).","initiator"],
-      ["Mobilité (Dash / reposition).","duelist"],
-      ["Atouts (ralentissements / heal).","sentinel"],
-      ["Smokes & walls.","controller"],
-    ]},
-    en:{ q:"Which abilities attract you most?", a:[
-      ["Information (Reveal, Flash).","initiator"],
-      ["Mobility (Dash / reposition).","duelist"],
-      ["Utility (slows / heal).","sentinel"],
-      ["Smokes & walls.","controller"],
-    ]}
-  },
-
-  {
-    fr:{ q:"Ton niveau mécanique ?", a:[
-      ["Très élevé, je veux en profiter.","duelist"],
-      ["Bon, mais perfectible.","initiator"],
-      ["Moyen : je gagne grâce à l’équipe.","controller"],
-      ["Variable : je mise sur le placement.","sentinel"],
-    ]},
-    en:{ q:"Your mechanical level?", a:[
-      ["Very high, I want to use it.","duelist"],
-      ["Good but improvable.","initiator"],
-      ["Average: I win thanks to teamplay.","controller"],
-      ["Situational: I rely on positioning.","sentinel"],
-    ]}
-  },
-
-  {
-    fr:{ q:"Tu veux être :", a:[
-      ["Le joueur décisif.","duelist"],
-      ["Le facilitateur.","initiator"],
-      ["Le meneur de jeu.","controller"],
-      ["Le joueur intuable.","sentinel"],
-    ]},
-    en:{ q:"You want to be:", a:[
-      ["The decisive player.","duelist"],
-      ["The enabler.","initiator"],
-      ["The playmaker / leader.","controller"],
-      ["The unkillable one.","sentinel"],
-    ]}
-  }
-];
   // -------------------------
   // Phase 2 - Agents / Questions
   // -------------------------
@@ -525,7 +533,6 @@
     sentinel: ["Killjoy","Cypher","Sage","Chamber","Deadlock"]
   };
 
-  // ✅✅✅ CORRIGÉ : toutes les questions finissent par "}," (2 accolades), pas "}}}," (3)
   const Q_AGENT = {
     duelist: [
       {fr:{q:"Quand un round commence mal, ton premier réflexe est :",a:[
@@ -1343,8 +1350,8 @@
   langSel.addEventListener("change", (e) => setLanguage(e.target.value));
   startBtn.addEventListener("click", start);
   restartBtn.addEventListener("click", () => {
-  location.reload();
-});
+    location.reload();
+  });
   backBtn.addEventListener("click", goBack);
   retryBtn.addEventListener("click", start);
   copyBtn.addEventListener("click", copyResult);
@@ -1355,5 +1362,3 @@
 </script>
 </body>
 </html>
-
-
